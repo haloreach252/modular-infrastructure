@@ -1,0 +1,15 @@
+{
+  "block.modularinfrastructure.birch_post": "Birch Post",
+  "block.modularinfrastructure.concrete_post": "Concrete Post",
+  "block.modularinfrastructure.iron_post": "Iron Post",
+  "block.modularinfrastructure.oak_post": "Oak Post",
+  "block.modularinfrastructure.spruce_post": "Spruce Post",
+  "item.modularinfrastructure.post_configurator": "Post Configurator",
+  "item.modularinfrastructure.post_configurator.tooltip": "Configure post properties",
+  "item.modularinfrastructure.wire_connector": "Wire Connector",
+  "item.modularinfrastructure.wire_connector.tooltip": "Connect wires between posts",
+  "item.modularinfrastructure.wire_cutters": "Wire Cutters",
+  "item.modularinfrastructure.wire_cutters.tooltip": "Cut wire connections",
+  "itemGroup.modularinfrastructure": "Modular Infrastructure",
+  "modularinfrastructure.configuration.title": "Modular Infrastructure Configs"
+}

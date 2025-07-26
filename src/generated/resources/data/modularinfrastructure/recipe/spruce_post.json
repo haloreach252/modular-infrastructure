@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "item": "minecraft:spruce_log"
+    }
+  },
+  "pattern": [
+    "L",
+    "L",
+    "L"
+  ],
+  "result": {
+    "count": 6,
+    "id": "modularinfrastructure:spruce_post"
+  }
+}

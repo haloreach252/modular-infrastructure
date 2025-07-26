@@ -1,0 +1,8 @@
+{
+  "parent": "modularinfrastructure:block/post_width_4",
+  "textures": {
+    "bottom": "modularinfrastructure:block/iron_post_top",
+    "side": "modularinfrastructure:block/iron_post_side",
+    "top": "modularinfrastructure:block/iron_post_top"
+  }
+}

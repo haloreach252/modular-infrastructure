@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "width=2": {
+      "model": "modularinfrastructure:block/oak_post_width_2"
+    },
+    "width=3": {
+      "model": "modularinfrastructure:block/oak_post_width_3"
+    },
+    "width=4": {
+      "model": "modularinfrastructure:block/oak_post_width_4"
+    },
+    "width=5": {
+      "model": "modularinfrastructure:block/oak_post_width_5"
+    },
+    "width=6": {
+      "model": "modularinfrastructure:block/oak_post_width_6"
+    },
+    "width=7": {
+      "model": "modularinfrastructure:block/oak_post_width_7"
+    },
+    "width=8": {
+      "model": "modularinfrastructure:block/oak_post_width_8"
+    }
+  }
+}
