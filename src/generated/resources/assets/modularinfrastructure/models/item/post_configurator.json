@@ -1,6 +1,26 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "modularinfrastructure:item/post_configurator_copy",
+      "predicate": {
+        "modularinfrastructure:mode": 0.0
+      }
+    },
+    {
+      "model": "modularinfrastructure:item/post_configurator_paste",
+      "predicate": {
+        "modularinfrastructure:mode": 1.0
+      }
+    },
+    {
+      "model": "modularinfrastructure:item/post_configurator_batch",
+      "predicate": {
+        "modularinfrastructure:mode": 2.0
+      }
+    }
+  ],
   "textures": {
-    "layer0": "modularinfrastructure:item/post_configurator"
+    "layer0": "modularinfrastructure:item/post_configurator_copy"
   }
 }

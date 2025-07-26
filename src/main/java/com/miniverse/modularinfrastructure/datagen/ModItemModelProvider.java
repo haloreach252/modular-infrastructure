@@ -19,9 +19,36 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Tools
-        simpleItem(ModItems.POST_CONFIGURATOR);
+        postConfiguratorWithModes();
         simpleItem(ModItems.WIRE_CONNECTOR);
         simpleItem(ModItems.WIRE_CUTTERS);
+    }
+    
+    private void postConfiguratorWithModes() {
+        // Create the individual mode models first
+        withExistingParent("post_configurator_copy", ResourceLocation.parse("item/generated"))
+            .texture("layer0", modLoc("item/post_configurator_copy"));
+        withExistingParent("post_configurator_paste", ResourceLocation.parse("item/generated"))
+            .texture("layer0", modLoc("item/post_configurator_paste"));
+        withExistingParent("post_configurator_batch", ResourceLocation.parse("item/generated"))
+            .texture("layer0", modLoc("item/post_configurator_batch"));
+        
+        // Create the main model with overrides
+        withExistingParent(ModItems.POST_CONFIGURATOR.getId().getPath(), 
+            ResourceLocation.parse("item/generated"))
+            .texture("layer0", modLoc("item/post_configurator_copy"))
+            .override()
+                .predicate(modLoc("mode"), 0.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/post_configurator_copy")))
+                .end()
+            .override()
+                .predicate(modLoc("mode"), 1.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/post_configurator_paste")))
+                .end()
+            .override()
+                .predicate(modLoc("mode"), 2.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/post_configurator_batch")))
+                .end();
     }
     
     private void simpleItem(DeferredItem<? extends Item> item) {

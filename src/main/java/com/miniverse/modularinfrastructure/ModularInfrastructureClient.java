@@ -1,6 +1,7 @@
 package com.miniverse.modularinfrastructure;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -27,5 +28,38 @@ public class ModularInfrastructureClient {
         // Some client setup code
         ModularInfrastructure.LOGGER.info("HELLO FROM CLIENT SETUP");
         ModularInfrastructure.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        
+        // Register item properties
+        event.enqueueWork(() -> {
+            registerItemProperties();
+        });
+    }
+    
+    private static void registerItemProperties() {
+        net.minecraft.client.renderer.item.ItemProperties.register(
+            ModItems.POST_CONFIGURATOR.get(),
+            ResourceLocation.fromNamespaceAndPath(ModularInfrastructure.MODID, "mode"),
+            (stack, level, entity, seed) -> {
+                var mode = getConfiguratorMode(stack);
+                return switch (mode) {
+                    case COPY -> 0.0f;
+                    case PASTE -> 1.0f;
+                    case BATCH -> 2.0f;
+                };
+            }
+        );
+    }
+    
+    private static com.miniverse.modularinfrastructure.item.PostConfiguratorItem.Mode getConfiguratorMode(net.minecraft.world.item.ItemStack stack) {
+        var customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+        if (customData != null && customData.contains("Mode")) {
+            String modeName = customData.copyTag().getString("Mode");
+            try {
+                return com.miniverse.modularinfrastructure.item.PostConfiguratorItem.Mode.valueOf(modeName);
+            } catch (IllegalArgumentException e) {
+                // Invalid mode, return default
+            }
+        }
+        return com.miniverse.modularinfrastructure.item.PostConfiguratorItem.Mode.COPY;
     }
 }

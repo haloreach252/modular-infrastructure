@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import com.miniverse.modularinfrastructure.block.PostBlock;
+import com.miniverse.modularinfrastructure.item.PostBlockItem;
 
 import java.util.function.Supplier;
 
@@ -60,7 +61,7 @@ public class ModBlocks {
     }
     
     private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(String name, DeferredBlock<T> block) {
-        return ModularInfrastructure.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ModularInfrastructure.ITEMS.register(name, () -> new PostBlockItem(block.get(), new Item.Properties()));
     }
     
     public static void init() {
