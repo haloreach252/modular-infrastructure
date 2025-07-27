@@ -1,0 +1,116 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "modularinfrastructure:block/concrete_post_side",
+		"metal": "minecraft:block/iron_block",
+		"insulator": "minecraft:block/cyan_terracotta",
+		"connector": "minecraft:block/iron_block"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [3, 0, 3],
+			"to": [13, 2, 13],
+			"color": 7,
+			"faces": {
+				"north": {"uv": [0, 0, 10, 2], "texture": "#metal"},
+				"east": {"uv": [0, 0, 10, 2], "texture": "#metal"},
+				"south": {"uv": [0, 0, 10, 2], "texture": "#metal"},
+				"west": {"uv": [0, 0, 10, 2], "texture": "#metal"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#metal"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "insulator_body",
+			"from": [4, 2, 4],
+			"to": [12, 11, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 2, 6]},
+			"color": 4,
+			"faces": {
+				"north": {"uv": [0, 0, 8, 9], "texture": "#insulator"},
+				"east": {"uv": [0, 0, 8, 9], "texture": "#insulator"},
+				"south": {"uv": [0, 0, 8, 9], "texture": "#insulator"},
+				"west": {"uv": [0, 0, 8, 9], "texture": "#insulator"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#insulator"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#insulator"}
+			}
+		},
+		{
+			"name": "ring_1",
+			"from": [3, 3, 3],
+			"to": [13, 4, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
+			"color": 9,
+			"faces": {
+				"north": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#metal"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "ring_2",
+			"from": [3, 5, 3],
+			"to": [13, 6, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
+			"color": 9,
+			"faces": {
+				"north": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#metal"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "ring_3",
+			"from": [3, 7, 3],
+			"to": [13, 8, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
+			"color": 9,
+			"faces": {
+				"north": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#metal"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "ring_4",
+			"from": [3, 9, 3],
+			"to": [13, 10, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
+			"color": 9,
+			"faces": {
+				"north": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 10, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 10, 10], "texture": "#metal"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "top_plate",
+			"from": [5, 11, 5],
+			"to": [11, 12, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 8, 6]},
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 1], "texture": "#connector"},
+				"east": {"uv": [0, 0, 6, 1], "texture": "#connector"},
+				"south": {"uv": [0, 0, 6, 1], "texture": "#connector"},
+				"west": {"uv": [0, 0, 6, 1], "texture": "#connector"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#connector"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#connector"}
+			}
+		}
+	]
+}

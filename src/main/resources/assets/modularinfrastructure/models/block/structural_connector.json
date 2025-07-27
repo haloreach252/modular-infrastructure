@@ -1,0 +1,40 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "minecraft:block/iron_block",
+		"base": "minecraft:block/iron_block",
+		"hook": "minecraft:block/chain"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"east": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"south": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"west": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#base"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#base"}
+			}
+		},
+		{
+			"name": "hook",
+			"from": [5, 2, 7],
+			"to": [11, 8, 9],
+			"color": 1,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#hook"},
+				"east": {"uv": [0, 0, 2, 6], "texture": "#hook"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#hook"},
+				"west": {"uv": [0, 0, 2, 6], "texture": "#hook"},
+				"up": {"uv": [0, 0, 6, 2], "texture": "#hook"},
+				"down": {"uv": [0, 0, 6, 2], "texture": "#hook"}
+			}
+		}
+	],
+	"display": {}
+}

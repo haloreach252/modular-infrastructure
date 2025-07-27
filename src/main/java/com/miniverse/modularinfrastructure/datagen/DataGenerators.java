@@ -30,6 +30,9 @@ public class DataGenerators {
         // Recipes
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
         
+        // Loot Tables
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(packOutput, lookupProvider));
+        
         // Language
         generator.addProvider(event.includeClient(), new ModLanguageProvider(packOutput));
     }

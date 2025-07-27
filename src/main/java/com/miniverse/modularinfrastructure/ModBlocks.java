@@ -11,6 +11,9 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import com.miniverse.modularinfrastructure.block.PostBlock;
+import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
+import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
+import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
 import com.miniverse.modularinfrastructure.item.PostBlockItem;
 
 import java.util.function.Supplier;
@@ -54,9 +57,67 @@ public class ModBlocks {
             .sound(SoundType.STONE)
             .noOcclusion()));
     
+    // Power Connectors
+    public static final DeferredBlock<PowerConnectorBlock> POWER_CONNECTOR_LV = registerConnectorBlock("power_connector_lv",
+        () -> new PowerConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .strength(2.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), PowerConnectorBlock.PowerTier.LV));
+    
+    public static final DeferredBlock<PowerConnectorBlock> POWER_CONNECTOR_MV = registerConnectorBlock("power_connector_mv",
+        () -> new PowerConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .strength(2.5F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), PowerConnectorBlock.PowerTier.MV));
+    
+    public static final DeferredBlock<PowerConnectorBlock> POWER_CONNECTOR_HV = registerConnectorBlock("power_connector_hv",
+        () -> new PowerConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .strength(3.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), PowerConnectorBlock.PowerTier.HV));
+    
+    // Data Connectors
+    public static final DeferredBlock<DataConnectorBlock> DATA_CONNECTOR_BASIC = registerConnectorBlock("data_connector_basic",
+        () -> new DataConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .strength(2.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), DataConnectorBlock.DataTier.BASIC));
+    
+    public static final DeferredBlock<DataConnectorBlock> DATA_CONNECTOR_ADVANCED = registerConnectorBlock("data_connector_advanced",
+        () -> new DataConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BLUE)
+            .strength(2.5F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), DataConnectorBlock.DataTier.ADVANCED));
+    
+    // Utility Connectors
+    public static final DeferredBlock<UtilityConnectorBlock> REDSTONE_CONNECTOR = registerConnectorBlock("redstone_connector",
+        () -> new UtilityConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_RED)
+            .strength(2.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), UtilityConnectorBlock.UtilityType.REDSTONE));
+    
+    public static final DeferredBlock<UtilityConnectorBlock> STRUCTURAL_CONNECTOR = registerConnectorBlock("structural_connector",
+        () -> new UtilityConnectorBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BROWN)
+            .strength(2.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion(), UtilityConnectorBlock.UtilityType.STRUCTURAL));
+    
     private static <T extends Block> DeferredBlock<T> registerPostBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+    
+    private static <T extends Block> DeferredBlock<T> registerConnectorBlock(String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
+        registerConnectorBlockItem(name, toReturn);
         return toReturn;
     }
     
@@ -64,15 +125,33 @@ public class ModBlocks {
         return ModularInfrastructure.ITEMS.register(name, () -> new PostBlockItem(block.get(), new Item.Properties()));
     }
     
+    private static <T extends Block> DeferredItem<BlockItem> registerConnectorBlockItem(String name, DeferredBlock<T> block) {
+        return ModularInfrastructure.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+    
     public static void init() {
         // Static initialization
     }
     
     public static void addCreativeTabItems(CreativeModeTab.Output output) {
+        // Posts
         output.accept(OAK_POST.get());
         output.accept(BIRCH_POST.get());
         output.accept(SPRUCE_POST.get());
         output.accept(IRON_POST.get());
         output.accept(CONCRETE_POST.get());
+        
+        // Power Connectors
+        output.accept(POWER_CONNECTOR_LV.get());
+        output.accept(POWER_CONNECTOR_MV.get());
+        output.accept(POWER_CONNECTOR_HV.get());
+        
+        // Data Connectors
+        output.accept(DATA_CONNECTOR_BASIC.get());
+        output.accept(DATA_CONNECTOR_ADVANCED.get());
+        
+        // Utility Connectors
+        output.accept(REDSTONE_CONNECTOR.get());
+        output.accept(STRUCTURAL_CONNECTOR.get());
     }
 }

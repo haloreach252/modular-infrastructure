@@ -24,6 +24,15 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.IRON_POST.get(), "Iron Post");
         add(ModBlocks.CONCRETE_POST.get(), "Concrete Post");
         
+        // Connectors
+        add(ModBlocks.POWER_CONNECTOR_LV.get(), "LV Power Connector");
+        add(ModBlocks.POWER_CONNECTOR_MV.get(), "MV Power Connector");
+        add(ModBlocks.POWER_CONNECTOR_HV.get(), "HV Power Connector");
+        add(ModBlocks.DATA_CONNECTOR_BASIC.get(), "Basic Data Connector");
+        add(ModBlocks.DATA_CONNECTOR_ADVANCED.get(), "Advanced Data Connector");
+        add(ModBlocks.REDSTONE_CONNECTOR.get(), "Redstone Connector");
+        add(ModBlocks.STRUCTURAL_CONNECTOR.get(), "Structural Connector");
+        
         // Items/Tools
         add(ModItems.POST_CONFIGURATOR.get(), "Post Configurator");
         add(ModItems.WIRE_CONNECTOR.get(), "Wire Connector");
