@@ -25,6 +25,13 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity {
         this(pos, state, DataConnectorBlock.DataTier.BASIC);
     }
     
+    @Override
+    protected double getConnectorLength() {
+        // Based on model dimensions - both tiers are 11 pixels tall
+        // Connection point should be at the top of the connector
+        return 0.6875;  // 11/16 = 0.6875 blocks from edge
+    }
+    
     public int getAvailableChannels() {
         return tier.getChannels() - usedChannels;
     }

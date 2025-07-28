@@ -22,6 +22,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         postConfiguratorWithModes();
         simpleItem(ModItems.WIRE_CONNECTOR);
         simpleItem(ModItems.WIRE_CUTTERS);
+        
+        // Wire Coils
+        simpleItem(ModItems.WIRECOIL_COPPER);
+        simpleItem(ModItems.WIRECOIL_ELECTRUM);
+        simpleItem(ModItems.WIRECOIL_STEEL);
+        simpleItem(ModItems.WIRECOIL_DATA);
+        simpleItem(ModItems.WIRECOIL_DENSE_DATA);
+        simpleItem(ModItems.WIRECOIL_REDSTONE);
+        simpleItem(ModItems.WIRECOIL_ROPE);
     }
     
     private void postConfiguratorWithModes() {

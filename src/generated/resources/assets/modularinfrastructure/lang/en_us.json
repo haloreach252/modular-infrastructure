@@ -17,6 +17,21 @@
   "item.modularinfrastructure.wire_connector.tooltip": "Connect wires between posts",
   "item.modularinfrastructure.wire_cutters": "Wire Cutters",
   "item.modularinfrastructure.wire_cutters.tooltip": "Cut wire connections",
+  "item.modularinfrastructure.wirecoil_copper": "Copper Wire Coil",
+  "item.modularinfrastructure.wirecoil_data": "Data Cable Coil",
+  "item.modularinfrastructure.wirecoil_dense_data": "Dense Data Cable Coil",
+  "item.modularinfrastructure.wirecoil_electrum": "Electrum Wire Coil",
+  "item.modularinfrastructure.wirecoil_redstone": "Redstone Wire Coil",
+  "item.modularinfrastructure.wirecoil_rope": "Structural Rope",
+  "item.modularinfrastructure.wirecoil_steel": "Steel Wire Coil",
   "itemGroup.modularinfrastructure": "Modular Infrastructure",
-  "modularinfrastructure.configuration.title": "Modular Infrastructure Configs"
+  "message.modularinfrastructure.wire_connected": "Wire connected!",
+  "message.modularinfrastructure.wire_connection_cancelled": "Wire connection cancelled",
+  "message.modularinfrastructure.wire_connection_failed": "Connection failed - incompatible connector or no space",
+  "message.modularinfrastructure.wire_linking": "Wire linking started at %s",
+  "message.modularinfrastructure.wire_too_long": "Wire too long! Maximum length: %s blocks",
+  "modularinfrastructure.configuration.title": "Modular Infrastructure Configs",
+  "tooltip.modularinfrastructure.wire_coil.linking": "Linking from: %s",
+  "tooltip.modularinfrastructure.wire_coil.max_length": "Max Length: %s blocks",
+  "tooltip.modularinfrastructure.wire_coil.type": "Type: %s"
 }

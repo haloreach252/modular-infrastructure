@@ -38,10 +38,31 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.WIRE_CONNECTOR.get(), "Wire Connector");
         add(ModItems.WIRE_CUTTERS.get(), "Wire Cutters");
         
+        // Wire Coils
+        add(ModItems.WIRECOIL_COPPER.get(), "Copper Wire Coil");
+        add(ModItems.WIRECOIL_ELECTRUM.get(), "Electrum Wire Coil");
+        add(ModItems.WIRECOIL_STEEL.get(), "Steel Wire Coil");
+        add(ModItems.WIRECOIL_DATA.get(), "Data Cable Coil");
+        add(ModItems.WIRECOIL_DENSE_DATA.get(), "Dense Data Cable Coil");
+        add(ModItems.WIRECOIL_REDSTONE.get(), "Redstone Wire Coil");
+        add(ModItems.WIRECOIL_ROPE.get(), "Structural Rope");
+        
         // Tooltips
         add("item.modularinfrastructure.post_configurator.tooltip", "Configure post properties");
         add("item.modularinfrastructure.wire_connector.tooltip", "Connect wires between posts");
         add("item.modularinfrastructure.wire_cutters.tooltip", "Cut wire connections");
+        
+        // Wire Coil Tooltips
+        add("tooltip.modularinfrastructure.wire_coil.type", "Type: %s");
+        add("tooltip.modularinfrastructure.wire_coil.max_length", "Max Length: %s blocks");
+        add("tooltip.modularinfrastructure.wire_coil.linking", "Linking from: %s");
+        
+        // Wire Messages
+        add("message.modularinfrastructure.wire_connection_cancelled", "Wire connection cancelled");
+        add("message.modularinfrastructure.wire_too_long", "Wire too long! Maximum length: %s blocks");
+        add("message.modularinfrastructure.wire_connected", "Wire connected!");
+        add("message.modularinfrastructure.wire_connection_failed", "Connection failed - incompatible connector or no space");
+        add("message.modularinfrastructure.wire_linking", "Wire linking started at %s");
         
         // Config
         add("modularinfrastructure.configuration.title", "Modular Infrastructure Configs");

@@ -10,6 +10,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = ModularInfrastructure.MODID, dist = Dist.CLIENT)
@@ -33,6 +34,12 @@ public class ModularInfrastructureClient {
         event.enqueueWork(() -> {
             registerItemProperties();
         });
+    }
+    
+    @SubscribeEvent
+    static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        // Block entity renderers removed - using section-based rendering instead
+        // Wire rendering is now handled by WireRenderer using AddSectionGeometryEvent
     }
     
     private static void registerItemProperties() {

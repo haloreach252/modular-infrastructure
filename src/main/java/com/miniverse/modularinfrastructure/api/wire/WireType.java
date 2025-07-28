@@ -28,6 +28,13 @@ public abstract class WireType {
     public String getUniqueName() {
         return uniqueName;
     }
+    
+    /**
+     * Get the unique ID for this wire type (used for network sync)
+     */
+    public String getId() {
+        return "modularinfrastructure:" + uniqueName;
+    }
 
     /**
      * Get the color of this wire type for rendering

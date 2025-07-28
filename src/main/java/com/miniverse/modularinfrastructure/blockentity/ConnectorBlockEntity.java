@@ -1,6 +1,7 @@
 package com.miniverse.modularinfrastructure.blockentity;
 
-import com.miniverse.modularinfrastructure.api.wire.WireType;
+import com.miniverse.modularinfrastructure.ModularInfrastructure;
+import com.miniverse.modularinfrastructure.api.wire.*;
 import com.miniverse.modularinfrastructure.block.ConnectorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,13 +19,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Base block entity for all connectors
  * Handles wire connections and network participation
+ * 
+ * Based on Immersive Engineering's connector system
+ * Original implementation by BluSunrize and the IE team
+ * Used under the "Blu's License of Common Sense"
  */
-public abstract class ConnectorBlockEntity extends BlockEntity {
+public abstract class ConnectorBlockEntity extends BlockEntity implements IImmersiveConnectable {
     // List of connections from this connector
     protected List<WireConnection> connections = new ArrayList<>();
     
@@ -33,6 +40,27 @@ public abstract class ConnectorBlockEntity extends BlockEntity {
     
     protected ConnectorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+    
+    private boolean networkRegistered = false;
+    
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level != null && !level.isClientSide && !networkRegistered) {
+            // Register with the wire network when loaded
+            ConnectorBlockEntityHelper.onChunkLoad(this, level);
+            networkRegistered = true;
+        }
+    }
+    
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        if (level != null && !level.isClientSide) {
+            // Unregister from the wire network when removed
+            ConnectorBlockEntityHelper.remove(level, this);
+        }
     }
     
     /**
@@ -64,6 +92,89 @@ public abstract class ConnectorBlockEntity extends BlockEntity {
         return true;
     }
     
+    // IImmersiveConnectable implementation
+    @Override
+    public BlockPos getPosition() {
+        return worldPosition;
+    }
+    
+    @Override
+    public Collection<ConnectionPoint> getConnectionPoints() {
+        // Most connectors have a single connection point at index 0
+        return Collections.singletonList(new ConnectionPoint(worldPosition, 0));
+    }
+    
+    @Override
+    public Vec3 getConnectionOffset(ConnectionPoint here, ConnectionPoint other, WireType type) {
+        // Match IE's implementation
+        BlockState state = getBlockState();
+        if (!(state.getBlock() instanceof ConnectorBlock)) {
+            ModularInfrastructure.LOGGER.error("ConnectorBlockEntity at {} has invalid block state: {}", worldPosition, state);
+            return new Vec3(0.5, 0.5, 0.5);
+        }
+        
+        // Get the facing direction (now points OUT from the block like IE)
+        Direction facing = state.getValue(ConnectorBlock.FACING);
+        // IE uses getFacing().getOpposite() but our facing is already correct
+        Direction side = facing.getOpposite();
+        
+        // getConnectorLength returns the distance from block edge (like IE's LENGTH values)
+        // We need to convert to distance from center by subtracting 0.5
+        double lengthFromHalf = getConnectorLength() - type.getRenderDiameter() / 2 - 0.5;
+        
+        ModularInfrastructure.LOGGER.debug("getConnectionOffset at {} - facing: {}, side: {}, connectorLength: {}, wireRadius: {}, lengthFromHalf: {}", 
+            worldPosition, facing, side, getConnectorLength(), type.getRenderDiameter() / 2, lengthFromHalf);
+        
+        // Return absolute position in block space
+        Vec3 result = new Vec3(
+            0.5 + lengthFromHalf * side.getStepX(),
+            0.5 + lengthFromHalf * side.getStepY(),
+            0.5 + lengthFromHalf * side.getStepZ()
+        );
+        
+        ModularInfrastructure.LOGGER.info("getConnectionOffset result: {}", result);
+        return result;
+    }
+    
+    /**
+     * Get the length of the connector from block edge to connection point
+     * This matches IE's LENGTH values (distance from block face)
+     * Override this in subclasses for specific connector types
+     */
+    protected double getConnectorLength() {
+        // Default length for generic connectors (matching IE's default)
+        return 0.5; // 8 pixels from edge (center of block)
+    }
+    
+    @Override
+    public boolean canConnectCable(WireType type, ConnectionPoint target) {
+        if (connections.size() >= maxConnections) {
+            return false;
+        }
+        ConnectorBlock block = (ConnectorBlock) getBlockState().getBlock();
+        return block.canAcceptWire(type);
+    }
+    
+    @Override
+    public void connectCable(Connection connection, ConnectionPoint point) {
+        // Network handles the actual connection storage
+    }
+    
+    @Override
+    public void removeCable(Connection connection, ConnectionPoint point) {
+        // Network handles the actual connection removal
+    }
+    
+    @Override
+    public Collection<Connection> getInternalConnections() {
+        return Collections.emptyList();
+    }
+    
+    @Override
+    public boolean isProxy() {
+        return false;
+    }
+    
     /**
      * Remove a wire connection from this connector
      */
@@ -87,27 +198,17 @@ public abstract class ConnectorBlockEntity extends BlockEntity {
     
     /**
      * Get the connection point offset for wire rendering
+     * @deprecated Use getConnectionOffset instead - this method may be removed
      */
+    @Deprecated
     public Vec3 getConnectionPoint() {
-        // Get the facing direction from the block state
-        if (getBlockState().getBlock() instanceof ConnectorBlock) {
-            Direction facing = getBlockState().getValue(ConnectorBlock.FACING);
-            Vec3 center = Vec3.atCenterOf(worldPosition);
-            
-            // Offset the connection point based on facing direction
-            // Connection point should be on the face of the connector
-            return switch (facing) {
-                case NORTH -> center.add(0, 0, -0.3);
-                case SOUTH -> center.add(0, 0, 0.3);
-                case EAST -> center.add(0.3, 0, 0);
-                case WEST -> center.add(-0.3, 0, 0);
-                case UP -> center.add(0, 0.3, 0);
-                case DOWN -> center.add(0, -0.3, 0);
-            };
-        }
+        // Use the same logic as getConnectionOffset for consistency
+        ConnectionPoint here = new ConnectionPoint(worldPosition, 0);
+        ConnectionPoint other = new ConnectionPoint(worldPosition, 0); // Dummy point
+        Vec3 offset = getConnectionOffset(here, other, ModWireTypes.COPPER_LV);
         
-        // Fallback to center
-        return Vec3.atCenterOf(worldPosition);
+        // Convert from block-relative to world coordinates
+        return Vec3.atLowerCornerOf(worldPosition).add(offset);
     }
     
     @Override

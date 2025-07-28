@@ -24,6 +24,16 @@ public class UtilityConnectorBlockEntity extends ConnectorBlockEntity {
         this(pos, state, UtilityConnectorBlock.UtilityType.STRUCTURAL);
     }
     
+    @Override
+    protected double getConnectorLength() {
+        // Based on model dimensions - distance from block edge
+        // Models: Redstone is 6 pixels tall, Structural is 8 pixels tall
+        return switch (type) {
+            case REDSTONE -> 0.375;      // 6/16 = 0.375 blocks from edge
+            case STRUCTURAL -> 0.5;      // 8/16 = 0.5 blocks from edge (center)
+        };
+    }
+    
     public int getRedstoneSignal() {
         return redstoneSignal;
     }

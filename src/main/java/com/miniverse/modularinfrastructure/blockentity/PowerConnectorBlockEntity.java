@@ -30,6 +30,17 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity {
         this(pos, state, PowerConnectorBlock.PowerTier.LV);
     }
     
+    @Override
+    protected double getConnectorLength() {
+        // Based on model dimensions - these should match IE's values
+        // IE uses: LV=0.5, MV=0.5625, HV=0.75
+        return switch (tier) {
+            case LV -> 0.5;      // Default/LV connector length
+            case MV -> 0.5625;   // MV connector length  
+            case HV -> 0.75;     // HV connector length
+        };
+    }
+    
     public void tick() {
         if (level == null || level.isClientSide) {
             return;

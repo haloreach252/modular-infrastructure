@@ -56,21 +56,22 @@ public abstract class ConnectorBlock extends Block implements EntityBlock {
         BlockPos pos = context.getClickedPos();
         Direction clickedFace = context.getClickedFace();
         
-        // The connector should face away from the clicked face (opposite direction)
-        Direction facing = clickedFace.getOpposite();
-        BlockPos supportPos = pos.relative(clickedFace);
+        // The connector should face in the same direction as the clicked face
+        // (pointing OUT from the support block, like IE does)
+        Direction facing = clickedFace;
+        BlockPos supportPos = pos.relative(clickedFace.getOpposite());
         BlockState supportState = level.getBlockState(supportPos);
         
-        if (isValidSupport(supportState, level, supportPos, clickedFace)) {
+        if (isValidSupport(supportState, level, supportPos, clickedFace.getOpposite())) {
             return this.defaultBlockState().setValue(FACING, facing);
         }
         
         // If that doesn't work, check all directions for a valid support
         for (Direction dir : Direction.values()) {
-            BlockPos checkPos = pos.relative(dir);
+            BlockPos checkPos = pos.relative(dir.getOpposite());
             BlockState checkState = level.getBlockState(checkPos);
-            if (isValidSupport(checkState, level, checkPos, dir)) {
-                return this.defaultBlockState().setValue(FACING, dir.getOpposite());
+            if (isValidSupport(checkState, level, checkPos, dir.getOpposite())) {
+                return this.defaultBlockState().setValue(FACING, dir);
             }
         }
         
@@ -107,14 +108,14 @@ public abstract class ConnectorBlock extends Block implements EntityBlock {
         double height = maxY - minY;
         double depth = maxZ - minZ;
         
-        // Rotate the shape based on facing
+        // Rotate the shape based on facing (connector extends in facing direction)
         return switch (facing) {
+            case UP -> baseShape; // Default orientation
             case DOWN -> Block.box(minX, 16 - height, minZ, maxX, 16, maxZ);
-            case NORTH -> Block.box(minX, minY + (16 - height) / 2, 16 - height, maxX, minY + (16 + height) / 2, 16);
-            case SOUTH -> Block.box(minX, minY + (16 - height) / 2, 0, maxX, minY + (16 + height) / 2, height);
-            case EAST -> Block.box(0, minY + (16 - height) / 2, minZ, height, minY + (16 + height) / 2, maxZ);
-            case WEST -> Block.box(16 - height, minY + (16 - height) / 2, minZ, 16, minY + (16 + height) / 2, maxZ);
-            default -> baseShape; // UP
+            case NORTH -> Block.box(minX, minY + (16 - height) / 2, 0, maxX, minY + (16 + height) / 2, height);
+            case SOUTH -> Block.box(minX, minY + (16 - height) / 2, 16 - height, maxX, minY + (16 + height) / 2, 16);
+            case WEST -> Block.box(0, minY + (16 - height) / 2, minZ, height, minY + (16 + height) / 2, maxZ);
+            case EAST -> Block.box(16 - height, minY + (16 - height) / 2, minZ, 16, minY + (16 + height) / 2, maxZ);
         };
     }
     
@@ -123,6 +124,7 @@ public abstract class ConnectorBlock extends Block implements EntityBlock {
                                   LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         // Remove connector if support is removed
         Direction facing = state.getValue(FACING);
+        // Check if the block behind the connector (opposite of facing) was removed
         if (direction == facing.getOpposite() && !isValidSupport(neighborState, level, neighborPos, direction)) {
             return Blocks.AIR.defaultBlockState();
         }

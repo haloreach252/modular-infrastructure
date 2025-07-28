@@ -45,6 +45,7 @@ public class ModularInfrastructure {
     public ModularInfrastructure(IEventBus modEventBus, ModContainer modContainer) {
         // Register event listeners
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(com.miniverse.modularinfrastructure.datagen.DataGenerators::gatherData);
         
         // Register deferred registries
         BLOCKS.register(modEventBus);
