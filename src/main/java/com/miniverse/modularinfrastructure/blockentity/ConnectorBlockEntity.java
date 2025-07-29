@@ -235,9 +235,11 @@ public abstract class ConnectorBlockEntity extends ImmersiveConnectableBlockEnti
             BlockPos pos = NbtUtils.readBlockPos(connTag, "pos").orElse(null);
             String typeName = connTag.getString("type");
             
-            if (pos != null) {
-                // TODO: Look up wire type by name
-                // For now, we'll need a wire type registry
+            if (pos != null && !typeName.isEmpty()) {
+                WireType wireType = com.miniverse.modularinfrastructure.common.wires.ModWireTypes.getWireType(typeName);
+                if (wireType != null) {
+                    connections.add(new WireConnection(pos, wireType));
+                }
             }
         }
     }

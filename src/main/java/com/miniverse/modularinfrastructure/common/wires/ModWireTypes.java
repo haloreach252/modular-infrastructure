@@ -10,6 +10,7 @@
 package com.miniverse.modularinfrastructure.common.wires;
 
 import com.miniverse.modularinfrastructure.api.wires.Connection;
+import com.miniverse.modularinfrastructure.api.wires.WireApi;
 import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler.IEnergyWire;
@@ -25,10 +26,14 @@ import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ModWireTypes
 {
+	// Wire type registry for NBT serialization
+	private static final Map<String, WireType> WIRE_TYPE_REGISTRY = new HashMap<>();
+	
 	// Power wires
 	public static final ShockingWire COPPER_LV = new ShockingWire("modularinfrastructure:copper_lv", 64, 0.125, 0xd4804a, 2048, WireType.LV_CATEGORY, 0.05f);
 	public static final ShockingWire ELECTRUM = new ShockingWire("modularinfrastructure:electrum_mv", 128, 0.15625, 0xeda045, 8192, WireType.MV_CATEGORY, 0.1f);
@@ -47,7 +52,25 @@ public class ModWireTypes
 	// Register all wire types
 	public static void register()
 	{
-		// Wire types will be registered when the mod initializes
+		// Register wire types with the API
+		registerWireType(COPPER_LV);
+		registerWireType(ELECTRUM);
+		registerWireType(STEEL);
+		registerWireType(DATA_CABLE);
+		registerWireType(DENSE_CABLE);
+		registerWireType(REDSTONE_WIRE);
+		registerWireType(ROPE);
+	}
+	
+	private static void registerWireType(WireType type)
+	{
+		WireApi.registerWireType(type);
+		WIRE_TYPE_REGISTRY.put(type.getUniqueName(), type);
+	}
+	
+	public static WireType getWireType(String name)
+	{
+		return WIRE_TYPE_REGISTRY.get(name);
 	}
 	
 	// Basic wire implementation
@@ -176,7 +199,8 @@ public class ModWireTypes
 		@Override
 		public Collection<ResourceLocation> getRequestedHandlers()
 		{
-			return ImmutableList.of(WireDamageHandler.ID);
+			// Handlers are requested by connectors, not wire types
+			return ImmutableList.of();
 		}
 	}
 }

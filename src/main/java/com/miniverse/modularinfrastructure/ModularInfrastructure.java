@@ -14,6 +14,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -46,6 +48,7 @@ public class ModularInfrastructure {
     public ModularInfrastructure(IEventBus modEventBus, ModContainer modContainer) {
         // Register event listeners
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(com.miniverse.modularinfrastructure.datagen.DataGenerators::gatherData);
         
         // Register deferred registries
@@ -98,5 +101,22 @@ public class ModularInfrastructure {
                 com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler::new
             );
         });
+    }
+    
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        LOGGER.info("Registering capabilities");
+        
+        // Register energy capability for power connectors
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            ModBlockEntities.POWER_CONNECTOR.get(),
+            (be, side) -> {
+                // Only expose capability on the side the connector is facing and null (for direct access)
+                if (side == null || side == be.getBlockState().getValue(com.miniverse.modularinfrastructure.block.PowerConnectorBlock.FACING)) {
+                    return be.getEnergyCapability();
+                }
+                return null;
+            }
+        );
     }
 }

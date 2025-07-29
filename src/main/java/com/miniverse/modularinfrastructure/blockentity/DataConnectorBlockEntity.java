@@ -1,11 +1,15 @@
 package com.miniverse.modularinfrastructure.blockentity;
 
+import com.google.common.collect.ImmutableList;
 import com.miniverse.modularinfrastructure.ModBlockEntities;
 import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.Collection;
 
 /**
  * Block entity for data connectors
@@ -61,5 +65,12 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         usedChannels = tag.getInt("usedChannels");
+    }
+    
+    @Override
+    public Collection<ResourceLocation> getRequestedHandlers() {
+        // TODO: When implementing data transfer (AE2, RS integration), request appropriate handlers
+        // For now, data connectors don't request any handlers
+        return ImmutableList.of();
     }
 }
