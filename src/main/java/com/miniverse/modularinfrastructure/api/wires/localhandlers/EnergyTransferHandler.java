@@ -158,6 +158,7 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 		if(sourceSinkMapInitialized)
 			return;
 		sourceSinkMapInitialized = true;
+		
 		for(ConnectionPoint cp : localNet.getConnectionPoints())
 		{
 			IImmersiveConnectable iic = localNet.getConnector(cp);
@@ -184,6 +185,7 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 			}
 			transferPaths.add(new SinkPathsFromSource(source.getKey(), source.getValue(), sinkPaths));
 		}
+		
 	}
 
 	private void runDijkstraWithSource(ConnectionPoint source, Consumer<Path> output)

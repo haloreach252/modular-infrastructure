@@ -30,12 +30,12 @@ import java.util.Collection;
  * Used under the "Blu's License of Common Sense"
  */
 public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements EnergyConnector {
-    private final PowerConnectorBlock.PowerTier tier;
+    private PowerConnectorBlock.PowerTier tier;
     private final boolean relay;
     
     // Dual storage system for network energy transfer
-    private final MutableEnergyStorage storageToNet;
-    private final MutableEnergyStorage storageToMachine;
+    private MutableEnergyStorage storageToNet;
+    private MutableEnergyStorage storageToMachine;
     private final ConnectorEnergyStorage energyCap;
     
     // Track energy transferred in current tick
@@ -54,7 +54,15 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
     }
     
     public PowerConnectorBlockEntity(BlockPos pos, BlockState state) {
-        this(pos, state, PowerConnectorBlock.PowerTier.LV);
+        this(pos, state, determineTierFromState(state));
+    }
+    
+    private static PowerConnectorBlock.PowerTier determineTierFromState(BlockState state) {
+        if (state.getBlock() instanceof PowerConnectorBlock powerBlock) {
+            return powerBlock.getPowerTier();
+        }
+        // Default to LV if we can't determine
+        return PowerConnectorBlock.PowerTier.LV;
     }
     
     @Override
@@ -83,13 +91,21 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
             BlockEntity targetBE = level.getBlockEntity(targetPos);
             
             if (targetBE != null) {
+                // We're accessing the machine from the side that faces the connector
+                // Since the machine is at facing.getOpposite() from us, we access it from 'facing' side
+                Direction accessSide = facing;
                 IEnergyStorage target = level.getCapability(Capabilities.EnergyStorage.BLOCK, 
-                        targetPos, null);
+                        targetPos, level.getBlockState(targetPos), targetBE, accessSide);
                 if (target != null && target.canReceive()) {
                     int inserted = target.receiveEnergy(maxOut, false);
                     storageToMachine.extractEnergy(inserted, false);
                     currentTickToMachine += inserted;
-                    
+                } else if (level.getGameTime() % 20 == 0 && storageToMachine.getEnergyStored() > 0) {
+                    // Debug: Log why we can't send energy
+                    com.miniverse.modularinfrastructure.ModularInfrastructure.LOGGER.info(
+                        "PowerConnector at {} cannot send to {} ({}): cap={}, canReceive={}, accessing from {} side", 
+                        worldPosition, targetPos, targetBE.getClass().getSimpleName(),
+                        target != null, target != null && target.canReceive(), accessSide);
                 }
             }
         }
@@ -173,6 +189,22 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        
+        // Load tier first if present
+        if (tag.contains("tier")) {
+            try {
+                PowerConnectorBlock.PowerTier savedTier = PowerConnectorBlock.PowerTier.valueOf(tag.getString("tier"));
+                if (this.tier != savedTier) {
+                    this.tier = savedTier;
+                    // Reinitialize storage with correct capacity
+                    this.storageToMachine = new MutableEnergyStorage(getMaxInput(), getMaxInput(), getMaxInput());
+                    this.storageToNet = new MutableEnergyStorage(getMaxInput(), getMaxInput(), getMaxInput());
+                }
+            } catch (IllegalArgumentException e) {
+                com.miniverse.modularinfrastructure.ModularInfrastructure.LOGGER.error(
+                    "Invalid tier '{}' loaded for PowerConnectorBlockEntity at {}", tag.getString("tier"), worldPosition);
+            }
+        }
         
         // Load dual storage
         CompoundTag toMachine = tag.getCompound("toMachine");

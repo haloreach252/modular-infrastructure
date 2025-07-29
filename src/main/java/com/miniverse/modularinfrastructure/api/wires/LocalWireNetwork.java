@@ -186,10 +186,12 @@ public class LocalWireNetwork implements IWorldTickable
 			unloadConnector(p, existingIIC);
 		}
 		connectors.put(p, iic);
+		// Always add requested handlers for the connector, not just when it has connections
+		addRequestedHandlers(iic, globalNet);
+		
 		for(ConnectionPoint cp : iic.getConnectionPoints())
 			if(connections.containsKey(cp))
 			{
-				addRequestedHandlers(iic, globalNet);
 				for(LocalNetworkHandler h : handlers.values())
 					h.onConnectorLoaded(cp, iic);
 			}
