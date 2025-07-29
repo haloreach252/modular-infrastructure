@@ -61,6 +61,7 @@ public class WireCoilUseHandler implements WirecoilUtils.UseCallback {
             final WireLink storedLink = stack.get(IEApiDataComponents.WIRE_LINK);
             if (storedLink == null) {
                 stack.set(IEApiDataComponents.WIRE_LINK, WireLink.create(cpHere, world, masterOffsetHere, targetHere));
+                player.displayClientMessage(Component.translatable("modularinfrastructure.chat.info.connectionStarted", masterPos.getX(), masterPos.getY(), masterPos.getZ()), true);
             } else {
                 BlockEntity tileEntityLinkingPos = world.getBlockEntity(storedLink.cp().position());
                 int distanceSq = (int)Math.ceil(storedLink.cp().position().distSqr(masterPos));

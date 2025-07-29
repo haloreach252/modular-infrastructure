@@ -64,6 +64,16 @@ public class ModLanguageProvider extends LanguageProvider {
         add("message.modularinfrastructure.wire_connection_failed", "Connection failed - incompatible connector or no space");
         add("message.modularinfrastructure.wire_linking", "Wire linking started at %s");
         
+        // Chat Messages for Wire Connections
+        add("modularinfrastructure.chat.error.wrongCable", "This cable is not compatible with this connector");
+        add("modularinfrastructure.chat.error.wrongDimension", "Connection must be in the same dimension");
+        add("modularinfrastructure.chat.error.sameConnection", "Cannot connect to the same point");
+        add("modularinfrastructure.chat.error.tooFar", "Connection is too far");
+        add("modularinfrastructure.chat.error.invalidPoint", "Invalid connection point");
+        add("modularinfrastructure.chat.error.connectionExists", "Connection already exists");
+        add("modularinfrastructure.chat.error.cantSee", "Cannot see connection point - path is obstructed");
+        add("modularinfrastructure.chat.info.connectionStarted", "Connection started at [%s, %s, %s]");
+        
         // Config
         add("modularinfrastructure.configuration.title", "Modular Infrastructure Configs");
     }

@@ -3,6 +3,7 @@ package com.miniverse.modularinfrastructure.blockentity;
 import com.google.common.collect.ImmutableList;
 import com.miniverse.modularinfrastructure.ModBlockEntities;
 import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
+import com.miniverse.modularinfrastructure.common.wires.WireConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -30,11 +31,10 @@ public class UtilityConnectorBlockEntity extends ConnectorBlockEntity {
     
     @Override
     protected double getConnectorLength() {
-        // Based on model dimensions - distance from block edge
-        // Models: Redstone is 6 pixels tall, Structural is 8 pixels tall
+        // Using values from WireConfig for easy adjustment
         return switch (type) {
-            case REDSTONE -> 0.375;      // 6/16 = 0.375 blocks from edge
-            case STRUCTURAL -> 0.5;      // 8/16 = 0.5 blocks from edge (center)
+            case REDSTONE -> WireConfig.ConnectorOffsets.REDSTONE_CONNECTOR_LENGTH;
+            case STRUCTURAL -> WireConfig.ConnectorOffsets.STRUCTURAL_CONNECTOR_LENGTH;
         };
     }
     

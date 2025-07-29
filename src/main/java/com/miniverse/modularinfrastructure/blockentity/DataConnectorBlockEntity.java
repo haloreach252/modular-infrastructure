@@ -3,6 +3,7 @@ package com.miniverse.modularinfrastructure.blockentity;
 import com.google.common.collect.ImmutableList;
 import com.miniverse.modularinfrastructure.ModBlockEntities;
 import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
+import com.miniverse.modularinfrastructure.common.wires.WireConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -31,9 +32,11 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity {
     
     @Override
     protected double getConnectorLength() {
-        // Based on model dimensions - both tiers are 11 pixels tall
-        // Connection point should be at the top of the connector
-        return 0.6875;  // 11/16 = 0.6875 blocks from edge
+        // Using values from WireConfig for easy adjustment
+        return switch (tier) {
+            case BASIC -> WireConfig.ConnectorOffsets.DATA_BASIC_CONNECTOR_LENGTH;
+            case ADVANCED -> WireConfig.ConnectorOffsets.DATA_ADVANCED_CONNECTOR_LENGTH;
+        };
     }
     
     public int getAvailableChannels() {

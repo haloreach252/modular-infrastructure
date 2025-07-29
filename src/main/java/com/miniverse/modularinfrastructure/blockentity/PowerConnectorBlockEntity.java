@@ -9,6 +9,7 @@ import com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransfe
 import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
 import com.miniverse.modularinfrastructure.common.util.EnergyHelper;
 import com.miniverse.modularinfrastructure.common.util.Utils;
+import com.miniverse.modularinfrastructure.common.wires.WireConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -67,12 +68,11 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
     
     @Override
     protected double getConnectorLength() {
-        // Based on model dimensions - these should match IE's values
-        // IE uses: LV=0.5, MV=0.5625, HV=0.75
+        // Using values from WireConfig for easy adjustment
         return switch (tier) {
-            case LV -> 0.5;      // Default/LV connector length
-            case MV -> 0.5625;   // MV connector length  
-            case HV -> 0.75;     // HV connector length
+            case LV -> WireConfig.ConnectorOffsets.LV_CONNECTOR_LENGTH;
+            case MV -> WireConfig.ConnectorOffsets.MV_CONNECTOR_LENGTH;
+            case HV -> WireConfig.ConnectorOffsets.HV_CONNECTOR_LENGTH;
         };
     }
     

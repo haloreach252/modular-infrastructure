@@ -1,18 +1,19 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
 		"particle": "modularinfrastructure:block/concrete_post_side",
 		"metal": "modularinfrastructure:block/concrete_post_side",
-		"insulator": "minecraft:block/terracotta",
-		"connector": "minecraft:block/copper_block"
+		"insulator": "block/terracotta",
+		"connector": "block/copper_block"
 	},
 	"elements": [
 		{
 			"name": "base",
-			"from": [4, 0, 4],
-			"to": [12, 2, 12],
-			"color": 7,
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -1]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 2], "texture": "#metal"},
 				"east": {"uv": [0, 0, 8, 2], "texture": "#metal"},
@@ -24,10 +25,9 @@
 		},
 		{
 			"name": "insulator_body",
-			"from": [5, 2, 5],
-			"to": [11, 8, 11],
+			"from": [6.25, 2, 6.25],
+			"to": [9.75, 7, 9.75],
 			"rotation": {"angle": 0, "axis": "y", "origin": [6, 2, 6]},
-			"color": 4,
 			"faces": {
 				"north": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
 				"east": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
@@ -39,10 +39,9 @@
 		},
 		{
 			"name": "ring_1",
-			"from": [4, 3, 4],
-			"to": [12, 4, 12],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
-			"color": 9,
+			"from": [5.75, 3, 5.75],
+			"to": [10.25, 3.6, 10.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 4]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
 				"east": {"uv": [0, 0, 8, 1], "texture": "#metal"},
@@ -54,10 +53,9 @@
 		},
 		{
 			"name": "ring_2",
-			"from": [4, 5, 4],
-			"to": [12, 6, 12],
+			"from": [5.75, 5, 5.75],
+			"to": [10.25, 5.6, 10.25],
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
-			"color": 9,
 			"faces": {
 				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
 				"east": {"uv": [0, 0, 8, 1], "texture": "#metal"},
@@ -69,10 +67,9 @@
 		},
 		{
 			"name": "top_plate",
-			"from": [6, 8, 6],
-			"to": [10, 9, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [6, 8, 6]},
-			"color": 2,
+			"from": [7, 7, 7],
+			"to": [9, 7.5, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, 7]},
 			"faces": {
 				"north": {"uv": [0, 0, 4, 1], "texture": "#connector"},
 				"east": {"uv": [0, 0, 4, 1], "texture": "#connector"},
