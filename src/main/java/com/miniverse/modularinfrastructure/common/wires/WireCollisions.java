@@ -9,15 +9,14 @@
 
 package com.miniverse.modularinfrastructure.common.wires;
 
-import com.miniverse.modularinfrastructure.api.utils.DirectionUtils;
-import com.miniverse.modularinfrastructure.api.wire.Connection;
-import com.miniverse.modularinfrastructure.api.wire.GlobalWireNetwork;
-import com.miniverse.modularinfrastructure.api.wire.LocalWireNetwork;
-import com.miniverse.modularinfrastructure.api.wire.WireCollisionData;
-import com.miniverse.modularinfrastructure.api.wire.WireCollisionData.CollisionInfo;
+import com.miniverse.modularinfrastructure.api.wires.Connection;
+import com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork;
+import com.miniverse.modularinfrastructure.api.wires.LocalWireNetwork;
+import com.miniverse.modularinfrastructure.api.wires.WireCollisionData;
+import com.miniverse.modularinfrastructure.api.wires.WireCollisionData.CollisionInfo;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.ICollisionHandler;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler;
-import com.miniverse.modularinfrastructure.api.wire.WireUtils;
+import com.miniverse.modularinfrastructure.api.wires.utils.WireUtils;
 import com.miniverse.modularinfrastructure.common.config.IEServerConfig;
 import com.miniverse.modularinfrastructure.common.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -82,7 +81,7 @@ public class WireCollisions
 						BlockPos dropPos = pos;
 						if(WireUtils.preventsConnection(worldIn, pos, newState, info.intersectA(), info.intersectB()))
 						{
-							for(Direction f : DirectionUtils.VALUES)
+							for(Direction f : Direction.values())
 								if(worldIn.isEmptyBlock(pos.relative(f)))
 								{
 									dropPos = dropPos.relative(f);

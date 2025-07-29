@@ -10,7 +10,7 @@
 package com.miniverse.modularinfrastructure.common.wires;
 
 import com.miniverse.modularinfrastructure.api.Lib;
-import com.miniverse.modularinfrastructure.api.wire.*;
+import com.miniverse.modularinfrastructure.api.wires.*;
 import com.miniverse.modularinfrastructure.api.wires.IConnectionTemplate.TemplateConnection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;

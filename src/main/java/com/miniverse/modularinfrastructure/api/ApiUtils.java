@@ -34,4 +34,16 @@ public class ApiUtils {
             task.run();
         }
     }
+    
+    /**
+     * Get a specific dimension (x=0, y=1, z=2) from a Vec3
+     */
+    public static double getDim(Vec3 vec, int dim) {
+        return switch (dim) {
+            case 0 -> vec.x;
+            case 1 -> vec.y;
+            case 2 -> vec.z;
+            default -> throw new IllegalArgumentException("Invalid dimension: " + dim);
+        };
+    }
 }

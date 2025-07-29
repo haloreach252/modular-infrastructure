@@ -5,6 +5,8 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
 
 public class Utils {
     
@@ -49,5 +51,22 @@ public class Utils {
                 }
             }
         }
+    }
+    
+    /**
+     * Check if a Vec3 position is within a block's bounds (with tolerance)
+     * The third BlockPos parameter seems to be used as an offset or reference point
+     */
+    public static boolean isVecInBlock(Vec3 vec, BlockPos blockPos, BlockPos referencePos, double tolerance) {
+        double minX = blockPos.getX() - tolerance;
+        double minY = blockPos.getY() - tolerance;
+        double minZ = blockPos.getZ() - tolerance;
+        double maxX = blockPos.getX() + 1 + tolerance;
+        double maxY = blockPos.getY() + 1 + tolerance;
+        double maxZ = blockPos.getZ() + 1 + tolerance;
+        
+        return vec.x >= minX && vec.x <= maxX &&
+               vec.y >= minY && vec.y <= maxY &&
+               vec.z >= minZ && vec.z <= maxZ;
     }
 }

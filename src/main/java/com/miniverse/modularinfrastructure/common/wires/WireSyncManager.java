@@ -11,9 +11,9 @@ package com.miniverse.modularinfrastructure.common.wires;
 
 import com.miniverse.modularinfrastructure.ModularInfrastructure;
 import com.miniverse.modularinfrastructure.api.ApiUtils;
-import com.miniverse.modularinfrastructure.api.wire.*;
-import com.miniverse.modularinfrastructure.network.MessageWireSync;
-import com.miniverse.modularinfrastructure.network.MessageWireSync.Operation;
+import com.miniverse.modularinfrastructure.api.wires.*;
+import com.miniverse.modularinfrastructure.common.network.MessageWireSync;
+import com.miniverse.modularinfrastructure.common.network.MessageWireSync.Operation;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 import net.minecraft.server.level.ServerChunkCache;

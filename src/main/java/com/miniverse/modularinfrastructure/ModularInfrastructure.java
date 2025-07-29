@@ -71,6 +71,32 @@ public class ModularInfrastructure {
         // Register wire types
         event.enqueueWork(() -> {
             com.miniverse.modularinfrastructure.common.wires.ModWireTypes.register();
+            
+            // Initialize GlobalWireNetwork static fields
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.GET_NET_UNCACHED.set(
+                level -> com.miniverse.modularinfrastructure.common.wires.WireNetworkCreator.getOrCreateNetwork(level)
+            );
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.SANITIZE_CONNECTIONS.set(() -> false);
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.VALIDATE_CONNECTIONS.set(() -> false);
+            
+            // Initialize wire coil use handler
+            com.miniverse.modularinfrastructure.api.wires.utils.WirecoilUtils.COIL_USE.set(
+                new com.miniverse.modularinfrastructure.common.wires.WireCoilUseHandler()
+            );
+            
+            // Register local network handlers
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler::new
+            );
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler::new
+            );
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler::new
+            );
         });
     }
 }

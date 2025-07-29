@@ -10,9 +10,10 @@
 package com.miniverse.modularinfrastructure.common.wires;
 
 import com.miniverse.modularinfrastructure.api.Lib;
-import com.miniverse.modularinfrastructure.api.wire.GlobalWireNetwork;
-import com.miniverse.modularinfrastructure.api.wires.DefaultProxyProvider;
+import com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork;
+import com.miniverse.modularinfrastructure.api.wires.proxy.DefaultProxyProvider;
 import com.miniverse.modularinfrastructure.common.data.ModDataAttachments;
+import com.miniverse.modularinfrastructure.common.wires.WireSyncManager;
 // import com.miniverse.modularinfrastructure.mixin.accessors.DataStorageAccess;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;

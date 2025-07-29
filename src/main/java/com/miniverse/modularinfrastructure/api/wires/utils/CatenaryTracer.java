@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static blusunrize.immersiveengineering.api.ApiUtils.getDim;
+import static com.miniverse.modularinfrastructure.api.ApiUtils.getDim;
 
 public class CatenaryTracer
 {

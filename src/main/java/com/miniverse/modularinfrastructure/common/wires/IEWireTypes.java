@@ -110,7 +110,7 @@ public class IEWireTypes
 	{
 		final IEWireType type;
 		final WireConfig config;
-		final IntValue color;
+		final int color;
 
 		public BasicWire(IEWireType type)
 		{
@@ -124,7 +124,7 @@ public class IEWireTypes
 		@Override
 		public int getColour(Connection connection)
 		{
-			return color.get();
+			return color;
 		}
 
 		@Override
