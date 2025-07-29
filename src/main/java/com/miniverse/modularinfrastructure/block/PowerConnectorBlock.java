@@ -1,7 +1,7 @@
 package com.miniverse.modularinfrastructure.block;
 
 import com.miniverse.modularinfrastructure.ModBlockEntities;
-import com.miniverse.modularinfrastructure.api.wire.WireType;
+import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.blockentity.PowerConnectorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -18,9 +18,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public class PowerConnectorBlock extends ConnectorBlock {
     public enum PowerTier {
-        LV(1, WireType.POWER_LV, "Low Voltage", 256),
-        MV(2, WireType.POWER_MV, "Medium Voltage", 1024),
-        HV(3, WireType.POWER_HV, "High Voltage", 4096);
+        LV(1, WireType.LV_CATEGORY, "Low Voltage", 256),
+        MV(2, WireType.MV_CATEGORY, "Medium Voltage", 1024),
+        HV(3, WireType.HV_CATEGORY, "High Voltage", 4096);
         
         private final int tier;
         private final String category;

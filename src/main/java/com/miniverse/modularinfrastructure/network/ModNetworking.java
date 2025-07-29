@@ -18,9 +18,9 @@ public class ModNetworking {
         
         // Register wire sync packet
         registrar.playToClient(
-            MessageWireSync.TYPE,
-            MessageWireSync.CODEC,
-            MessageWireSync::handle
+            com.miniverse.modularinfrastructure.common.network.MessageWireSync.ID,
+            com.miniverse.modularinfrastructure.common.network.MessageWireSync.CODEC,
+            com.miniverse.modularinfrastructure.common.network.MessageWireSync::process
         );
     }
 }

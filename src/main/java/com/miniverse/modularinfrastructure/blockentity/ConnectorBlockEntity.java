@@ -1,11 +1,14 @@
 package com.miniverse.modularinfrastructure.blockentity;
 
 import com.miniverse.modularinfrastructure.ModularInfrastructure;
-import com.miniverse.modularinfrastructure.api.wire.*;
+import com.miniverse.modularinfrastructure.api.TargetingInfo;
+import com.miniverse.modularinfrastructure.api.wires.*;
+import com.miniverse.modularinfrastructure.api.wires.impl.ImmersiveConnectableBlockEntity;
 import com.miniverse.modularinfrastructure.block.ConnectorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
@@ -17,6 +20,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,7 +36,7 @@ import java.util.List;
  * Original implementation by BluSunrize and the IE team
  * Used under the "Blu's License of Common Sense"
  */
-public abstract class ConnectorBlockEntity extends BlockEntity implements IImmersiveConnectable {
+public abstract class ConnectorBlockEntity extends ImmersiveConnectableBlockEntity {
     // List of connections from this connector
     protected List<WireConnection> connections = new ArrayList<>();
     
@@ -40,27 +45,6 @@ public abstract class ConnectorBlockEntity extends BlockEntity implements IImmer
     
     protected ConnectorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-    }
-    
-    private boolean networkRegistered = false;
-    
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        if (level != null && !level.isClientSide && !networkRegistered) {
-            // Register with the wire network when loaded
-            ConnectorBlockEntityHelper.onChunkLoad(this, level);
-            networkRegistered = true;
-        }
-    }
-    
-    @Override
-    public void setRemoved() {
-        super.setRemoved();
-        if (level != null && !level.isClientSide) {
-            // Unregister from the wire network when removed
-            ConnectorBlockEntityHelper.remove(level, this);
-        }
     }
     
     /**
@@ -93,10 +77,6 @@ public abstract class ConnectorBlockEntity extends BlockEntity implements IImmer
     }
     
     // IImmersiveConnectable implementation
-    @Override
-    public BlockPos getPosition() {
-        return worldPosition;
-    }
     
     @Override
     public Collection<ConnectionPoint> getConnectionPoints() {
@@ -147,7 +127,26 @@ public abstract class ConnectorBlockEntity extends BlockEntity implements IImmer
     }
     
     @Override
-    public boolean canConnectCable(WireType type, ConnectionPoint target) {
+    public ConnectionPoint getTargetedPoint(TargetingInfo info, Vec3i offset) {
+        // Default implementation - single connection point at index 0
+        // Override in subclasses for connectors with multiple connection points
+        return new ConnectionPoint(worldPosition, 0);
+    }
+    
+    @Override
+    public boolean canConnect() {
+        // Connectors can always connect to wires
+        return true;
+    }
+    
+    @Override
+    public BlockPos getConnectionMaster(@Nullable WireType cableType, TargetingInfo target) {
+        // For simple connectors, they are their own master
+        return worldPosition;
+    }
+    
+    @Override
+    public boolean canConnectCable(WireType type, ConnectionPoint target, Vec3i offset) {
         if (connections.size() >= maxConnections) {
             return false;
         }
@@ -156,7 +155,7 @@ public abstract class ConnectorBlockEntity extends BlockEntity implements IImmer
     }
     
     @Override
-    public void connectCable(Connection connection, ConnectionPoint point) {
+    public void connectCable(WireType type, ConnectionPoint target, IImmersiveConnectable other, ConnectionPoint otherTarget) {
         // Network handles the actual connection storage
     }
     
@@ -205,7 +204,7 @@ public abstract class ConnectorBlockEntity extends BlockEntity implements IImmer
         // Use the same logic as getConnectionOffset for consistency
         ConnectionPoint here = new ConnectionPoint(worldPosition, 0);
         ConnectionPoint other = new ConnectionPoint(worldPosition, 0); // Dummy point
-        Vec3 offset = getConnectionOffset(here, other, ModWireTypes.COPPER_LV);
+        Vec3 offset = getConnectionOffset(here, other, com.miniverse.modularinfrastructure.common.wires.ModWireTypes.COPPER_LV);
         
         // Convert from block-relative to world coordinates
         return Vec3.atLowerCornerOf(worldPosition).add(offset);

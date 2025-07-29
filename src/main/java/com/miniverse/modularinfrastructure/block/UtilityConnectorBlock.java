@@ -1,7 +1,7 @@
 package com.miniverse.modularinfrastructure.block;
 
 import com.miniverse.modularinfrastructure.ModBlockEntities;
-import com.miniverse.modularinfrastructure.api.wire.WireType;
+import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.blockentity.UtilityConnectorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
@@ -15,8 +15,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class UtilityConnectorBlock extends ConnectorBlock {
     public enum UtilityType {
-        REDSTONE(WireType.REDSTONE, "Redstone"),
-        STRUCTURAL(WireType.STRUCTURAL, "Structural");
+        REDSTONE(WireType.REDSTONE_CATEGORY, "Redstone"),
+        STRUCTURAL(WireType.STRUCTURE_CATEGORY, "Structural");
         
         private final String category;
         private final String displayName;

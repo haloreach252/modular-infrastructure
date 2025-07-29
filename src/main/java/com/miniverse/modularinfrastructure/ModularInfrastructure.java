@@ -21,6 +21,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(ModularInfrastructure.MODID)
 public class ModularInfrastructure {
     public static final String MODID = "modularinfrastructure";
+    public static final String MOD_ID = MODID; // Alternative constant name for compatibility
     public static final Logger LOGGER = LogUtils.getLogger();
     
     // Registries
@@ -57,6 +58,8 @@ public class ModularInfrastructure {
         ModBlocks.init();
         ModItems.init();
         ModBlockEntities.init();
+        com.miniverse.modularinfrastructure.common.data.ModDataAttachments.register(modEventBus);
+        com.miniverse.modularinfrastructure.api.IEApiDataComponents.register(modEventBus);
         
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -64,5 +67,10 @@ public class ModularInfrastructure {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("Modular Infrastructure Common Setup");
+        
+        // Register wire types
+        event.enqueueWork(() -> {
+            com.miniverse.modularinfrastructure.common.wires.ModWireTypes.register();
+        });
     }
 }

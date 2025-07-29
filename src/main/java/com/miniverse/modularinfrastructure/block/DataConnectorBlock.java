@@ -1,7 +1,7 @@
 package com.miniverse.modularinfrastructure.block;
 
 import com.miniverse.modularinfrastructure.ModBlockEntities;
-import com.miniverse.modularinfrastructure.api.wire.WireType;
+import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.blockentity.DataConnectorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
@@ -15,8 +15,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class DataConnectorBlock extends ConnectorBlock {
     public enum DataTier {
-        BASIC(1, WireType.DATA_BASIC, "Basic Data", 8),
-        ADVANCED(2, WireType.DATA_ADVANCED, "Advanced Data", 32);
+        BASIC(1, "DATA_BASIC", "Basic Data", 8),
+        ADVANCED(2, "DATA_ADVANCED", "Advanced Data", 32);
         
         private final int tier;
         private final String category;

@@ -1,6 +1,6 @@
 package com.miniverse.modularinfrastructure.block;
 
-import com.miniverse.modularinfrastructure.api.wire.WireType;
+import com.miniverse.modularinfrastructure.api.wires.WireType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
