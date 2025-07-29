@@ -15,8 +15,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class DataConnectorBlock extends ConnectorBlock {
     public enum DataTier {
-        BASIC(1, "DATA_BASIC", "Basic Data", 8),
-        ADVANCED(2, "DATA_ADVANCED", "Advanced Data", 32);
+        BASIC(1, "modularinfrastructure:data", "Basic Data", 8),
+        ADVANCED(2, "modularinfrastructure:data", "Advanced Data", 32);
         
         private final int tier;
         private final String category;
