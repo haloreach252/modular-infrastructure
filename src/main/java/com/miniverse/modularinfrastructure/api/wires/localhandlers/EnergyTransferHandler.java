@@ -228,11 +228,15 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 	{
 		updateSourcesAndSinks();
 		resetLimits();
+		
+		
 		for(SinkPathsFromSource sourceData : transferPaths)
 		{
 			ConnectionPoint sourceCp = sourceData.sourceCP();
 			EnergyConnector source = sourceData.sourceConnector();
 			int available = source.getAvailableEnergy();
+			
+			
 			if(available <= 0)
 				continue;
 			double maxSum = 0;
@@ -251,7 +255,10 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 						conn = c;
 					}
 				EnergyConnector sink = sinkEntry.sinkConnector();
-				int requested = (int)Math.min(sink.getRequestedEnergy(), limit*(1-sinkEntry.pathTo().loss));
+				int sinkRequested = sink.getRequestedEnergy();
+				
+				
+				int requested = (int)Math.min(sinkRequested, limit*(1-sinkEntry.pathTo().loss));
 				if(requested <= 0)
 					continue;
 				double requiredAtSource = Math.min(requested/(1-sinkEntry.pathTo().loss), available);
@@ -262,6 +269,8 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 			}
 			if(maxSum==0)
 				continue;
+			
+			
 			double allowedFactor = Math.min(1, available/maxSum);
 			for(OutputData entry : maxOut)
 			{

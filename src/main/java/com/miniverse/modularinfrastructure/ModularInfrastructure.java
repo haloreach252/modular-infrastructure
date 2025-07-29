@@ -111,8 +111,9 @@ public class ModularInfrastructure {
             Capabilities.EnergyStorage.BLOCK,
             ModBlockEntities.POWER_CONNECTOR.get(),
             (be, side) -> {
-                // Only expose capability on the side the connector is facing and null (for direct access)
-                if (side == null || side == be.getBlockState().getValue(com.miniverse.modularinfrastructure.block.PowerConnectorBlock.FACING)) {
+                // Expose capability only on the opposite side of facing (where the connector attaches to machines)
+                // Also expose for null (direct access)
+                if (side == null || side == be.getBlockState().getValue(com.miniverse.modularinfrastructure.block.PowerConnectorBlock.FACING).getOpposite()) {
                     return be.getEnergyCapability();
                 }
                 return null;

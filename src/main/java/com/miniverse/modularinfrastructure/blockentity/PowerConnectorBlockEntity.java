@@ -45,7 +45,7 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
     public PowerConnectorBlockEntity(BlockPos pos, BlockState state, PowerConnectorBlock.PowerTier tier) {
         super(ModBlockEntities.POWER_CONNECTOR.get(), pos, state);
         this.tier = tier;
-        this.relay = false; // TODO: Add relay support
+        this.relay = false; // Power connectors are not relays - they connect to machines
         
         // Initialize dual storage system
         this.storageToMachine = new MutableEnergyStorage(getMaxInput(), getMaxInput(), getMaxInput());
@@ -73,25 +73,28 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
             return;
         }
         
+        
         // Transfer energy from network buffer to adjacent machines
         int maxOut = Math.min(storageToMachine.getEnergyStored(), getMaxOutput() - currentTickToMachine);
         if (maxOut > 0) {
             Direction facing = getBlockState().getValue(PowerConnectorBlock.FACING);
-            BlockPos targetPos = worldPosition.relative(facing);
+            // Output power to the OPPOSITE side of where the connector faces (where it's attached)
+            BlockPos targetPos = worldPosition.relative(facing.getOpposite());
             BlockEntity targetBE = level.getBlockEntity(targetPos);
             
             if (targetBE != null) {
                 IEnergyStorage target = level.getCapability(Capabilities.EnergyStorage.BLOCK, 
-                        targetPos, facing.getOpposite(), targetBE, null);
+                        targetPos, null);
                 if (target != null && target.canReceive()) {
                     int inserted = target.receiveEnergy(maxOut, false);
                     storageToMachine.extractEnergy(inserted, false);
                     currentTickToMachine += inserted;
+                    
                 }
             }
         }
         
-        // Reset tick counters
+        // Reset tick counters at the end like IE does
         currentTickToMachine = 0;
         currentTickToNet = 0;
     }
@@ -202,6 +205,7 @@ public class PowerConnectorBlockEntity extends ConnectorBlockEntity implements E
                 storageToNet.modifyEnergyStored(accepted);
                 currentTickToNet += accepted;
                 setChanged();
+                
             }
             
             return accepted;
