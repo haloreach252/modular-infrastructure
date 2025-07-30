@@ -36,8 +36,13 @@ public class AE2DataConnectorComponent implements IAE2DataConnector, IInWorldGri
         this.host = host;
         
         // Initialize the managed grid node
+        // Set flags based on tier - Advanced tier gets DENSE_CAPACITY for 32 channel base capacity
+        GridFlags[] flags = host.getDataTier() == com.miniverse.modularinfrastructure.block.DataConnectorBlock.DataTier.ADVANCED 
+            ? new GridFlags[] { GridFlags.REQUIRE_CHANNEL, GridFlags.DENSE_CAPACITY }
+            : new GridFlags[] { GridFlags.REQUIRE_CHANNEL };
+            
         mainNode = GridHelper.createManagedNode(this, new ConnectorNodeListener())
-            .setFlags(GridFlags.REQUIRE_CHANNEL)
+            .setFlags(flags)
             .setIdlePowerUsage(0.5) // Small power draw
             .setInWorldNode(true)
             .setExposedOnSides(EnumSet.allOf(Direction.class)); // Expose on all sides initially
@@ -187,5 +192,26 @@ public class AE2DataConnectorComponent implements IAE2DataConnector, IInWorldGri
      */
     public boolean isReady() {
         return mainNode.isReady();
+    }
+    
+    @Override
+    public int getEffectiveChannelCapacity(int baseChannels) {
+        // If we don't have a grid node yet, return base channels
+        IGridNode node = mainNode.getNode();
+        if (node == null || node.getGrid() == null) {
+            return baseChannels;
+        }
+        
+        // Get the channel mode from the grid's pathing service
+        var pathingService = node.getGrid().getPathingService();
+        var channelMode = pathingService.getChannelMode();
+        
+        // Handle infinite channel mode
+        if (channelMode == appeng.api.networking.pathing.ChannelMode.INFINITE) {
+            return Integer.MAX_VALUE;
+        }
+        
+        // Apply the channel capacity factor
+        return baseChannels * channelMode.getCableCapacityFactor();
     }
 }

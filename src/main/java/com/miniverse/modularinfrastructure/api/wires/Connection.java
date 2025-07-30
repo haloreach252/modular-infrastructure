@@ -253,7 +253,7 @@ public class Connection
 		return catData;
 	}
 
-	void resetCatenaryData(Vec3 newOffsetA, Vec3 newOffsetB)
+	public void resetCatenaryData(Vec3 newOffsetA, Vec3 newOffsetB)
 	{
 		catData = null;
 		endAOffset = newOffsetA;

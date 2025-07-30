@@ -33,4 +33,11 @@ public interface IAE2DataConnector {
      * Load AE2-specific data
      */
     void loadAdditional(CompoundTag tag, HolderLookup.Provider registries);
+    
+    /**
+     * Get the effective channel capacity based on AE2's channel mode configuration
+     * @param baseChannels The base number of channels (8 for normal, 32 for dense)
+     * @return The effective channel capacity after applying channel mode multiplier
+     */
+    int getEffectiveChannelCapacity(int baseChannels);
 }

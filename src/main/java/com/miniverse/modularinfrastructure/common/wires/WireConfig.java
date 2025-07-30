@@ -65,18 +65,20 @@ public class WireConfig {
     
     // Connector Offset Configurations
     public static class ConnectorOffsets {
+        // Higher values = lower on the block
+
         // Power Connectors
-        public static final double LV_CONNECTOR_LENGTH = 0.5;
-        public static final double MV_CONNECTOR_LENGTH = 0.58;
-        public static final double HV_CONNECTOR_LENGTH = 0.875;
+        public static final double LV_CONNECTOR_LENGTH = 0.65;
+        public static final double MV_CONNECTOR_LENGTH = 0.55;
+        public static final double HV_CONNECTOR_LENGTH = 0.3;
         
         // Data Connectors
-        public static final double DATA_BASIC_CONNECTOR_LENGTH = 0.6875;
-        public static final double DATA_ADVANCED_CONNECTOR_LENGTH = 0.6875;
+        public static final double DATA_BASIC_CONNECTOR_LENGTH = 0.7;
+        public static final double DATA_ADVANCED_CONNECTOR_LENGTH = 0.7;
         
         // Utility Connectors
-        public static final double REDSTONE_CONNECTOR_LENGTH = 0.3;
-        public static final double STRUCTURAL_CONNECTOR_LENGTH = 0.4;
+        public static final double REDSTONE_CONNECTOR_LENGTH = 0.8;
+        public static final double STRUCTURAL_CONNECTOR_LENGTH = 0.75;
     }
     
     // Future: Per-connection sag configuration

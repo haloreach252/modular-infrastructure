@@ -17,6 +17,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -69,6 +70,9 @@ public class ModularInfrastructure {
         
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        
+        // Register event handlers
+        NeoForge.EVENT_BUS.addListener(this::onRegisterCommands);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -125,5 +129,9 @@ public class ModularInfrastructure {
                 return null;
             }
         );
+    }
+    
+    private void onRegisterCommands(RegisterCommandsEvent event) {
+        com.miniverse.modularinfrastructure.common.commands.WireUpdateCommand.register(event.getDispatcher());
     }
 }

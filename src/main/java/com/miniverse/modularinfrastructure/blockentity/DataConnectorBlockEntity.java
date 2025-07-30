@@ -31,7 +31,7 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity implements co
     public DataConnectorBlockEntity(BlockPos pos, BlockState state, DataConnectorBlock.DataTier tier) {
         super(ModBlockEntities.DATA_CONNECTOR.get(), pos, state);
         this.tier = tier;
-        this.maxConnections = tier.getChannels();
+        // Don't set maxConnections here, it will be dynamically calculated based on channel mode
         
         // Initialize AE2 component if AE2 is loaded
         if (com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.isAE2Loaded()) {
@@ -53,7 +53,19 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity implements co
     }
     
     public int getAvailableChannels() {
-        return tier.getChannels() - usedChannels;
+        return getMaxChannels() - usedChannels;
+    }
+    
+    /**
+     * Get the maximum channels this connector can handle, respecting AE2's channel mode if present
+     */
+    public int getMaxChannels() {
+        if (ae2Component != null) {
+            // Use AE2's channel mode configuration
+            return ae2Component.getEffectiveChannelCapacity(tier.getChannels());
+        }
+        // Without AE2, use the base tier channels
+        return tier.getChannels();
     }
     
     public boolean requestChannels(int amount) {
@@ -136,5 +148,12 @@ public class DataConnectorBlockEntity extends ConnectorBlockEntity implements co
      */
     public DataConnectorBlock.DataTier getDataTier() {
         return tier;
+    }
+    
+    /**
+     * Override to provide dynamic max connections based on AE2 channel mode
+     */
+    protected int getMaxConnectionsInternal() {
+        return getMaxChannels();
     }
 }

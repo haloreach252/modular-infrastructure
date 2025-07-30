@@ -11,8 +11,8 @@
 	"elements": [
 		{
 			"name": "base",
-			"from": [5, 0, 5],
-			"to": [11, 2, 11],
+			"from": [5.5, 0, 5.5],
+			"to": [10.5, 2, 10.5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -1]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 2], "texture": "#metal"},
@@ -39,8 +39,8 @@
 		},
 		{
 			"name": "ring_1",
-			"from": [5.75, 3, 5.75],
-			"to": [10.25, 3.6, 10.25],
+			"from": [5.25, 2.5, 5.25],
+			"to": [10.75, 3.9, 10.75],
 			"rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 4]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
@@ -53,8 +53,8 @@
 		},
 		{
 			"name": "ring_2",
-			"from": [5.75, 5, 5.75],
-			"to": [10.25, 5.6, 10.25],
+			"from": [5.25, 4.75, 5.25],
+			"to": [10.75, 6.15, 10.75],
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
@@ -68,7 +68,7 @@
 		{
 			"name": "top_plate",
 			"from": [7, 7, 7],
-			"to": [9, 7.5, 9],
+			"to": [9, 7.8, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, 7]},
 			"faces": {
 				"north": {"uv": [0, 0, 4, 1], "texture": "#connector"},

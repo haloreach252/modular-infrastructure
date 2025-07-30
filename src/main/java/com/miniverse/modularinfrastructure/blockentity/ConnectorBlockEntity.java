@@ -51,7 +51,7 @@ public abstract class ConnectorBlockEntity extends ImmersiveConnectableBlockEnti
      * Add a wire connection to this connector
      */
     public boolean addConnection(BlockPos otherPos, WireType wireType) {
-        if (connections.size() >= maxConnections) {
+        if (connections.size() >= getMaxConnectionsInternal()) {
             return false;
         }
         
@@ -126,6 +126,14 @@ public abstract class ConnectorBlockEntity extends ImmersiveConnectableBlockEnti
         return 0.5; // 8 pixels from edge (center of block)
     }
     
+    /**
+     * Get the maximum number of connections this connector can support
+     * Subclasses can override to provide dynamic limits (e.g., based on AE2 channel mode)
+     */
+    protected int getMaxConnectionsInternal() {
+        return maxConnections;
+    }
+    
     @Override
     public ConnectionPoint getTargetedPoint(TargetingInfo info, Vec3i offset) {
         // Default implementation - single connection point at index 0
@@ -147,7 +155,7 @@ public abstract class ConnectorBlockEntity extends ImmersiveConnectableBlockEnti
     
     @Override
     public boolean canConnectCable(WireType type, ConnectionPoint target, Vec3i offset) {
-        if (connections.size() >= maxConnections) {
+        if (connections.size() >= getMaxConnectionsInternal()) {
             return false;
         }
         ConnectorBlock block = (ConnectorBlock) getBlockState().getBlock();

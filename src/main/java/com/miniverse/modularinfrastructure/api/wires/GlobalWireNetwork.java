@@ -613,4 +613,9 @@ public class GlobalWireNetwork extends SavedData implements IWorldTickable
 	{
 		return proxyProvider;
 	}
+	
+	public Collection<LocalWireNetwork> getLocalNets()
+	{
+		return localNetSet;
+	}
 }
