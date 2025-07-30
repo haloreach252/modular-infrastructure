@@ -11,6 +11,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.minecraft.client.renderer.RenderType;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = ModularInfrastructure.MODID, dist = Dist.CLIENT)
@@ -33,6 +35,7 @@ public class ModularInfrastructureClient {
         // Register item properties
         event.enqueueWork(() -> {
             registerItemProperties();
+            registerBlockRenderTypes();
         });
     }
     
@@ -68,5 +71,10 @@ public class ModularInfrastructureClient {
             }
         }
         return com.miniverse.modularinfrastructure.item.PostConfiguratorItem.Mode.COPY;
+    }
+    
+    private static void registerBlockRenderTypes() {
+        // Register cutout render type for transparent blocks
+        net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(ModBlocks.CHAIN_LINK_FENCE.get(), RenderType.cutout());
     }
 }

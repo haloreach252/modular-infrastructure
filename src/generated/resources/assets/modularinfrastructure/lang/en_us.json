@@ -1,5 +1,7 @@
 {
   "block.modularinfrastructure.birch_post": "Birch Post",
+  "block.modularinfrastructure.chain_link_fence": "Chain Link Fence",
+  "block.modularinfrastructure.circuit_breaker": "Circuit Breaker",
   "block.modularinfrastructure.concrete_post": "Concrete Post",
   "block.modularinfrastructure.data_connector_advanced": "Advanced Data Connector",
   "block.modularinfrastructure.data_connector_basic": "Basic Data Connector",

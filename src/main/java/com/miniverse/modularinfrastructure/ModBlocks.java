@@ -15,6 +15,7 @@ import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
 import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
 import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
 import com.miniverse.modularinfrastructure.block.CircuitBreakerBlock;
+import com.miniverse.modularinfrastructure.block.ChainLinkFenceBlock;
 import com.miniverse.modularinfrastructure.item.PostBlockItem;
 
 import java.util.function.Supplier;
@@ -118,6 +119,20 @@ public class ModBlocks {
             .sound(SoundType.METAL)
             .noOcclusion()));
     
+    // Fencing
+    public static final DeferredBlock<ChainLinkFenceBlock> CHAIN_LINK_FENCE = registerBlock("chain_link_fence",
+        () -> new ChainLinkFenceBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .strength(3.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion()));
+    
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
+        registerSimpleBlockItem(name, toReturn);
+        return toReturn;
+    }
+    
     private static <T extends Block> DeferredBlock<T> registerPostBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -132,6 +147,10 @@ public class ModBlocks {
     
     private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(String name, DeferredBlock<T> block) {
         return ModularInfrastructure.ITEMS.register(name, () -> new PostBlockItem(block.get(), new Item.Properties()));
+    }
+    
+    private static <T extends Block> DeferredItem<BlockItem> registerSimpleBlockItem(String name, DeferredBlock<T> block) {
+        return ModularInfrastructure.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
     
     private static <T extends Block> DeferredItem<BlockItem> registerConnectorBlockItem(String name, DeferredBlock<T> block) {
@@ -165,5 +184,8 @@ public class ModBlocks {
         
         // Circuit Breaker
         output.accept(CIRCUIT_BREAKER.get());
+        
+        // Fencing
+        output.accept(CHAIN_LINK_FENCE.get());
     }
 }

@@ -1,0 +1,680 @@
+{
+  "variants": {
+    "east=false,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=false,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge"
+    },
+    "east=false,north=false,south=false,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge"
+    },
+    "east=false,north=false,south=false,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge"
+    },
+    "east=false,north=false,south=false,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge"
+    },
+    "east=false,north=false,south=false,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single"
+    },
+    "east=false,north=false,south=false,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single"
+    },
+    "east=false,north=false,south=false,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single"
+    },
+    "east=false,north=false,south=false,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single"
+    },
+    "east=false,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=false,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=false,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=false,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=false,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=false,south=true,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 270
+    },
+    "east=false,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=false,south=true,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=false,south=true,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=false,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 270
+    },
+    "east=false,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 270
+    },
+    "east=false,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=false,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=false,north=true,south=false,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=false,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=false,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=false,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 180
+    },
+    "east=false,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=false,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 180
+    },
+    "east=false,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=false,north=true,south=true,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=false,north=true,south=true,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=true,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=true,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=false,north=true,south=true,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 270
+    },
+    "east=true,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=false,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=false,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=false,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 90
+    },
+    "east=true,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 90
+    },
+    "east=true,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 90
+    },
+    "east=true,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner",
+      "y": 90
+    },
+    "east=true,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=false,south=true,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=false,south=true,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=false,south=true,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 180
+    },
+    "east=true,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=false,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight"
+    },
+    "east=true,north=true,south=false,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    },
+    "east=true,north=true,south=false,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    },
+    "east=true,north=true,south=false,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    },
+    "east=true,north=true,south=false,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    },
+    "east=true,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_corner"
+    },
+    "east=true,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_cross"
+    },
+    "east=true,north=true,south=true,type=edge,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=edge,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=edge,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=edge,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_edge",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=single,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=single,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=single,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=single,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_single",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_straight",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=t_shape,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=t_shape,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    },
+    "east=true,north=true,south=true,type=t_shape,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape",
+      "y": 90
+    },
+    "east=true,north=true,south=true,type=t_shape,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/chain_link_fence_t_shape"
+    }
+  }
+}

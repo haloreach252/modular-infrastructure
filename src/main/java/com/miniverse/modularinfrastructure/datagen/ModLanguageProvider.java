@@ -34,6 +34,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.STRUCTURAL_CONNECTOR.get(), "Structural Connector");
         add(ModBlocks.CIRCUIT_BREAKER.get(), "Circuit Breaker");
         
+        // Fencing
+        add(ModBlocks.CHAIN_LINK_FENCE.get(), "Chain Link Fence");
+        
         // Items/Tools
         add(ModItems.POST_CONFIGURATOR.get(), "Post Configurator");
         add(ModItems.WIRE_CONNECTOR.get(), "Wire Connector");
