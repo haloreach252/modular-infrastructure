@@ -112,7 +112,7 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 		return Object2DoubleMaps.unmodifiable(transferredLastTick);
 	}
 
-	private void reset()
+	public void reset()
 	{
 		energyPaths.clear();
 		transferredNextTick.clear();
@@ -207,6 +207,11 @@ public class EnergyTransferHandler extends LocalNetworkHandler implements IWorld
 				break;
 			for(Connection next : localNet.getConnections(endPoint))
 			{
+				// Check if the connector at this endpoint allows the connection through
+				IImmersiveConnectable connector = localNet.getConnector(endPoint.position());
+				if(connector != null && !connector.allowsConnectionThrough(next, endPoint))
+					continue; // Skip this connection if the connector blocks it
+				
 				Path alternative = shortest.append(next, sinks.containsKey(next.getOtherEnd(shortest.end)));
 				if(!shortestKnown.containsKey(alternative.end))
 				{

@@ -86,4 +86,17 @@ public interface IImmersiveConnectable extends ILocalHandlerProvider
 	}
 
 	BlockPos getPosition();
+	
+	/**
+	 * Determines if this connector allows energy/data/signals to pass through a specific connection.
+	 * This is used by circuit breakers and similar blocks to control flow without removing connections.
+	 * 
+	 * @param conn The connection to check
+	 * @param localEnd The connection point on this connector that the connection is attached to
+	 * @return true if the connection should allow transfer, false to block it
+	 */
+	default boolean allowsConnectionThrough(Connection conn, ConnectionPoint localEnd)
+	{
+		return true;
+	}
 }

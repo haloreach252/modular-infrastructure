@@ -32,6 +32,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DATA_CONNECTOR_ADVANCED.get(), "Advanced Data Connector");
         add(ModBlocks.REDSTONE_CONNECTOR.get(), "Redstone Connector");
         add(ModBlocks.STRUCTURAL_CONNECTOR.get(), "Structural Connector");
+        add(ModBlocks.CIRCUIT_BREAKER.get(), "Circuit Breaker");
         
         // Items/Tools
         add(ModItems.POST_CONFIGURATOR.get(), "Post Configurator");

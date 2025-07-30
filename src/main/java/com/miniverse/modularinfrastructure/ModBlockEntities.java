@@ -7,6 +7,7 @@ import com.miniverse.modularinfrastructure.blockentity.PostBlockEntity;
 import com.miniverse.modularinfrastructure.blockentity.PowerConnectorBlockEntity;
 import com.miniverse.modularinfrastructure.blockentity.DataConnectorBlockEntity;
 import com.miniverse.modularinfrastructure.blockentity.UtilityConnectorBlockEntity;
+import com.miniverse.modularinfrastructure.blockentity.CircuitBreakerBlockEntity;
 
 public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PostBlockEntity>> POST_BLOCK_ENTITY = 
@@ -39,6 +40,12 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.of(UtilityConnectorBlockEntity::new, 
                 ModBlocks.REDSTONE_CONNECTOR.get(),
                 ModBlocks.STRUCTURAL_CONNECTOR.get()
+            ).build(null));
+    
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CircuitBreakerBlockEntity>> CIRCUIT_BREAKER = 
+        ModularInfrastructure.BLOCK_ENTITIES.register("circuit_breaker", 
+            () -> BlockEntityType.Builder.of(CircuitBreakerBlockEntity::new, 
+                ModBlocks.CIRCUIT_BREAKER.get()
             ).build(null));
     
     public static void init() {

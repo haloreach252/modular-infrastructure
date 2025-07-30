@@ -108,6 +108,9 @@ public class ModWireTypes
 		UtilityWires.ROPE_SAG
 	);
 	
+	// Internal connection type - used by multiblock connectors like circuit breakers
+	public static final InternalConnection INTERNAL_CONNECTION = new InternalConnection();
+	
 	// Register all wire types
 	public static void register()
 	{
@@ -119,6 +122,9 @@ public class ModWireTypes
 		registerWireType(DENSE_CABLE);
 		registerWireType(REDSTONE_WIRE);
 		registerWireType(ROPE);
+		
+		// Set the static reference in WireType
+		WireType.INTERNAL_CONNECTION = INTERNAL_CONNECTION;
 	}
 	
 	private static void registerWireType(WireType type)
@@ -267,6 +273,52 @@ public class ModWireTypes
 		{
 			// Handlers are requested by connectors, not wire types
 			return ImmutableList.of();
+		}
+	}
+	
+	// Internal connection implementation - used for connections inside multiblock connectors
+	private static class InternalConnection extends WireType
+	{
+		@Override
+		public String getUniqueName()
+		{
+			return "INTERNAL";
+		}
+
+		@Override
+		public int getColour(Connection connection)
+		{
+			return 0;
+		}
+
+		@Override
+		public double getSlack()
+		{
+			return 1.001;
+		}
+
+		@Override
+		public int getMaxLength()
+		{
+			return 0;
+		}
+
+		@Override
+		public ItemStack getWireCoil(Connection con)
+		{
+			return ItemStack.EMPTY;
+		}
+
+		@Override
+		public double getRenderDiameter()
+		{
+			return 0;
+		}
+
+		@Override
+		public String getCategory()
+		{
+			return null;
 		}
 	}
 }

@@ -14,6 +14,7 @@ import com.miniverse.modularinfrastructure.block.PostBlock;
 import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
 import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
 import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
+import com.miniverse.modularinfrastructure.block.CircuitBreakerBlock;
 import com.miniverse.modularinfrastructure.item.PostBlockItem;
 
 import java.util.function.Supplier;
@@ -109,6 +110,14 @@ public class ModBlocks {
             .sound(SoundType.METAL)
             .noOcclusion(), UtilityConnectorBlock.UtilityType.STRUCTURAL));
     
+    // Circuit Breaker
+    public static final DeferredBlock<CircuitBreakerBlock> CIRCUIT_BREAKER = registerConnectorBlock("circuit_breaker",
+        () -> new CircuitBreakerBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_GRAY)
+            .strength(2.5F)
+            .sound(SoundType.METAL)
+            .noOcclusion()));
+    
     private static <T extends Block> DeferredBlock<T> registerPostBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -153,5 +162,8 @@ public class ModBlocks {
         // Utility Connectors
         output.accept(REDSTONE_CONNECTOR.get());
         output.accept(STRUCTURAL_CONNECTOR.get());
+        
+        // Circuit Breaker
+        output.accept(CIRCUIT_BREAKER.get());
     }
 }

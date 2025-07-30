@@ -6,6 +6,12 @@ package com.miniverse.modularinfrastructure.common.wires;
  */
 public class WireConfig {
     
+    // General Wire Settings
+    public static class General {
+        public static final boolean ENABLE_WIRE_DAMAGE = true;
+        public static final boolean BLOCKS_BREAK_WIRES = true;
+    }
+    
     // Power Wire Configurations
     public static class PowerWires {
         // Copper/LV Wire
@@ -79,6 +85,9 @@ public class WireConfig {
         // Utility Connectors
         public static final double REDSTONE_CONNECTOR_LENGTH = 0.8;
         public static final double STRUCTURAL_CONNECTOR_LENGTH = 0.75;
+
+        // Misc
+        public static final double CIRCUIT_BREAKER_LENGTH = 0.85;
     }
     
     // Future: Per-connection sag configuration

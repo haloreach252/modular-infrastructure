@@ -17,7 +17,6 @@ import com.miniverse.modularinfrastructure.api.wires.WireCollisionData.Collision
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.ICollisionHandler;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler;
 import com.miniverse.modularinfrastructure.api.wires.utils.WireUtils;
-import com.miniverse.modularinfrastructure.common.config.IEServerConfig;
 import com.miniverse.modularinfrastructure.common.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,7 +38,7 @@ public class WireCollisions
 {
 	public static void handleEntityCollision(BlockPos p, Entity e)
 	{
-		if(!e.level().isClientSide&&IEServerConfig.WIRES.enableWireDamage.get()&&e instanceof LivingEntity living&&
+		if(!e.level().isClientSide&&WireConfig.General.ENABLE_WIRE_DAMAGE&&e instanceof LivingEntity living&&
 				!(e instanceof Player player&&player.getAbilities().invulnerable))
 		{
 			GlobalWireNetwork global = GlobalWireNetwork.getNetwork(e.level());
@@ -62,7 +61,7 @@ public class WireCollisions
 
 	public static void notifyBlockUpdate(@Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull BlockState newState, int flags)
 	{
-		if(IEServerConfig.WIRES.blocksBreakWires.get()&&!worldIn.isClientSide&&(flags&1)!=0&&!newState.getCollisionShape(worldIn, pos).isEmpty())
+		if(WireConfig.General.BLOCKS_BREAK_WIRES&&!worldIn.isClientSide&&(flags&1)!=0&&!newState.getCollisionShape(worldIn, pos).isEmpty())
 		{
 			GlobalWireNetwork globalNet = GlobalWireNetwork.getNetwork(worldIn);
 			Collection<CollisionInfo> data = globalNet.getCollisionData().getCollisionInfo(pos);

@@ -103,6 +103,12 @@ public class AE2NetworkBridgeHandler extends LocalNetworkHandler {
         IImmersiveConnectable connA = globalNet.getLocalNet(connection.getEndA()).getConnector(posA);
         IImmersiveConnectable connB = globalNet.getLocalNet(connection.getEndB()).getConnector(posB);
         
+        // Check if both connectors allow this connection through
+        if (!connA.allowsConnectionThrough(connection, connection.getEndA()) || 
+            !connB.allowsConnectionThrough(connection, connection.getEndB())) {
+            return;
+        }
+        
         // Check if both ends are data connectors with AE2 components
         if (!(connA instanceof DataConnectorBlockEntity dataA) || !(connB instanceof DataConnectorBlockEntity dataB)) {
             return;
