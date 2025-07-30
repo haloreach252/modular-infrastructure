@@ -2,8 +2,14 @@ package com.miniverse.modularinfrastructure.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CrossCollisionBlock;
@@ -14,15 +20,19 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.resources.ResourceLocation;
 import com.mojang.serialization.MapCodec;
 
 public class ChainLinkFenceBlock extends CrossCollisionBlock {
     public static final MapCodec<ChainLinkFenceBlock> CODEC = simpleCodec(ChainLinkFenceBlock::new);
     public static final EnumProperty<FenceType> TYPE = EnumProperty.create("type", FenceType.class);
+    public static final BooleanProperty HAS_POST = BooleanProperty.create("has_post");
     
     // Base shapes for the different fence types
     private static final VoxelShape POST_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
@@ -53,6 +63,7 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
         super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, properties);
         this.registerDefaultState(this.stateDefinition.any()
             .setValue(TYPE, FenceType.SINGLE)
+            .setValue(HAS_POST, false)
             .setValue(NORTH, false)
             .setValue(EAST, false)
             .setValue(SOUTH, false)
@@ -67,7 +78,7 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
     
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(TYPE, NORTH, EAST, SOUTH, WEST, WATERLOGGED);
+        builder.add(TYPE, HAS_POST, NORTH, EAST, SOUTH, WEST, WATERLOGGED);
     }
     
     @Override
@@ -97,7 +108,11 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
         BlockState belowState = level.getBlockState(belowPos);
         
         // Determine fence type based on connections and fence below
-        state = state.setValue(TYPE, determineFenceType(north, south, east, west, belowState, level, belowPos));
+        FenceType fenceType = determineFenceType(north, south, east, west, belowState, level, belowPos);
+        state = state.setValue(TYPE, fenceType);
+        
+        // Always start without post on initial placement
+        state = state.setValue(HAS_POST, false);
         
         return state;
     }
@@ -125,7 +140,19 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
             
-            state = state.setValue(TYPE, determineFenceType(north, south, east, west, belowState, level, belowPos));
+            FenceType oldType = state.getValue(TYPE);
+            boolean currentHasPost = state.getValue(HAS_POST);
+            
+            FenceType newType = determineFenceType(north, south, east, west, belowState, level, belowPos);
+            state = state.setValue(TYPE, newType);
+            
+            // If fence had no post and is changing from STRAIGHT to a junction type, add post
+            if (!currentHasPost && oldType == FenceType.STRAIGHT && 
+                (newType == FenceType.CORNER || newType == FenceType.T_SHAPE || 
+                 newType == FenceType.CROSS || newType == FenceType.EDGE)) {
+                state = state.setValue(HAS_POST, true);
+            }
+            // Otherwise preserve current post state (manual or automatic)
         } else if (direction == Direction.DOWN) {
             // If the block below changed, recalculate our type
             boolean north = state.getValue(NORTH);
@@ -133,10 +160,26 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
             boolean east = state.getValue(EAST);
             boolean west = state.getValue(WEST);
             
-            state = state.setValue(TYPE, determineFenceType(north, south, east, west, neighborState, level, neighborPos));
+            FenceType oldType = state.getValue(TYPE);
+            boolean currentHasPost = state.getValue(HAS_POST);
+            
+            FenceType newType = determineFenceType(north, south, east, west, neighborState, level, neighborPos);
+            state = state.setValue(TYPE, newType);
+            
+            // Same logic as above for post handling
+            if (!currentHasPost && oldType == FenceType.STRAIGHT && 
+                (newType == FenceType.CORNER || newType == FenceType.T_SHAPE || 
+                 newType == FenceType.CROSS || newType == FenceType.EDGE)) {
+                state = state.setValue(HAS_POST, true);
+            }
         }
         
         return state;
+    }
+    
+    private boolean shouldHavePostByDefault(FenceType type) {
+        // STRAIGHT type defaults to no post, all others default to having a post
+        return type != FenceType.STRAIGHT;
     }
     
     private FenceType determineFenceType(boolean north, boolean south, boolean east, boolean west, 
@@ -179,31 +222,14 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         FenceType type = state.getValue(TYPE);
+        boolean hasPost = state.getValue(HAS_POST);
         boolean north = state.getValue(NORTH);
         boolean south = state.getValue(SOUTH);
         boolean east = state.getValue(EAST);
         boolean west = state.getValue(WEST);
         
-        // Handle special cases for single and edge
-        if (type == FenceType.SINGLE) {
-            // Single fence: post is opposite to connection
-            // Default EW shape: fence extends west (x=0-12), post on east (x=12-16)
-            // Default NS shape: fence extends north (z=0-12), post on south (z=12-16)
-            
-            if (north) {
-                return SINGLE_SHAPE_NS; // Fence north, post south
-            } else if (east) {
-                return rotateShape(SINGLE_SHAPE_EW, 180); // Rotate 180 so fence east, post west
-            } else if (south) {
-                return rotateShape(SINGLE_SHAPE_NS, 180); // Rotate 180 so fence south, post north
-            } else if (west) {
-                return SINGLE_SHAPE_EW; // Default: fence west, post east
-            } else {
-                // No connections - use default east-west orientation
-                return SINGLE_SHAPE_EW;
-            }
-        }
-        
+        // Handle special cases for edge only
+        // Single fence should always use standard logic (same as straight)
         if (type == FenceType.EDGE) {
             // Edge should extend towards the connection
             // Default EW shape extends west (from x=0 to x=6)
@@ -223,10 +249,10 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
         }
         
         // Standard logic for other fence types
-        VoxelShape shape = POST_SHAPE;
+        VoxelShape shape = hasPost ? POST_SHAPE : Shapes.empty();
         
         // Add fence shapes based on connections
-        if (!north && !south && !east && !west) {
+        if ((!north && !south && !east && !west) || (type == FenceType.SINGLE)) {
             shape = Shapes.or(shape, SIDE_SHAPES[Direction.WEST.get2DDataValue()]);
             shape = Shapes.or(shape, SIDE_SHAPES[Direction.EAST.get2DDataValue()]);
         } else {
@@ -241,8 +267,36 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
     
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        // Use the same shape as visual shape for consistency
-        return getShape(state, level, pos, context);
+        FenceType type = state.getValue(TYPE);
+        boolean hasPost = state.getValue(HAS_POST);
+        boolean north = state.getValue(NORTH);
+        boolean south = state.getValue(SOUTH);
+        boolean east = state.getValue(EAST);
+        boolean west = state.getValue(WEST);
+        
+        // For edge type, use same collision as visual
+        if (type == FenceType.EDGE) {
+            return getShape(state, level, pos, context);
+        }
+        
+        // Standard collision logic
+        VoxelShape shape = hasPost ? POST_SHAPE : Shapes.empty();
+        
+        // Add collision shapes based on connections
+        // For SINGLE type with no connections, create full-width collision like STRAIGHT
+        if ((!north && !south && !east && !west) || (type == FenceType.SINGLE)) {
+            // Use collision shapes for both directions to create full fence collision
+            shape = Shapes.or(shape, COLLISION_SHAPES[Direction.WEST.get2DDataValue()]);
+            shape = Shapes.or(shape, COLLISION_SHAPES[Direction.EAST.get2DDataValue()]);
+        } else {
+            // Use collision shapes for actual connections
+            if (north) shape = Shapes.or(shape, COLLISION_SHAPES[Direction.NORTH.get2DDataValue()]);
+            if (south) shape = Shapes.or(shape, COLLISION_SHAPES[Direction.SOUTH.get2DDataValue()]);
+            if (east) shape = Shapes.or(shape, COLLISION_SHAPES[Direction.EAST.get2DDataValue()]);
+            if (west) shape = Shapes.or(shape, COLLISION_SHAPES[Direction.WEST.get2DDataValue()]);
+        }
+        
+        return shape;
     }
     
     private static VoxelShape rotateShape(VoxelShape shape, int degrees) {
@@ -263,6 +317,24 @@ public class ChainLinkFenceBlock extends CrossCollisionBlock {
     @Override
     public boolean isPathfindable(BlockState state, PathComputationType type) {
         return false;
+    }
+    
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        // Check if player is holding a wrench
+        if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tools/wrenches")))) {
+            if (!level.isClientSide()) {
+                // Toggle post presence
+                boolean hasPost = state.getValue(HAS_POST);
+                level.setBlock(pos, state.setValue(HAS_POST, !hasPost), 3);
+                
+                // Damage the wrench
+                stack.hurtAndBreak(1, player, player.getEquipmentSlotForItem(stack));
+            }
+            return ItemInteractionResult.SUCCESS;
+        }
+        
+        return super.useItemOn(stack, state, level, pos, player, hand, hit);
     }
     
     public boolean connectsTo(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {

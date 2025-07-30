@@ -38,6 +38,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHAIN_LINK_FENCE.get(), "Chain Link Fence");
         
         // Items/Tools
+        add(ModItems.INDUSTRIAL_WRENCH.get(), "Industrial Wrench");
         add(ModItems.POST_CONFIGURATOR.get(), "Post Configurator");
         add(ModItems.WIRE_CONNECTOR.get(), "Wire Connector");
         add(ModItems.WIRE_CUTTERS.get(), "Wire Cutters");
@@ -52,6 +53,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.WIRECOIL_ROPE.get(), "Structural Rope");
         
         // Tooltips
+        add("item.modularinfrastructure.industrial_wrench.tooltip", "Universal tool for configuring modular blocks");
+        add("item.modularinfrastructure.industrial_wrench.tooltip.usage", "Right-click blocks to configure, Shift+Right-click to copy settings");
         add("item.modularinfrastructure.post_configurator.tooltip", "Configure post properties");
         add("item.modularinfrastructure.wire_connector.tooltip", "Connect wires between posts");
         add("item.modularinfrastructure.wire_cutters.tooltip", "Cut wire connections");

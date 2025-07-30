@@ -118,12 +118,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // Create blockstate variants for each fence type
         getVariantBuilder(block).forAllStates(state -> {
             ChainLinkFenceBlock.FenceType type = state.getValue(ChainLinkFenceBlock.TYPE);
+            boolean hasPost = state.getValue(ChainLinkFenceBlock.HAS_POST);
             boolean north = state.getValue(ChainLinkFenceBlock.NORTH);
             boolean east = state.getValue(ChainLinkFenceBlock.EAST);
             boolean south = state.getValue(ChainLinkFenceBlock.SOUTH);
             boolean west = state.getValue(ChainLinkFenceBlock.WEST);
             
-            ModelFile model = models().getExistingFile(modLoc("block/" + blockName + "_" + type.getSerializedName()));
+            // Determine model name based on type and has_post
+            String modelName;
+            if (type == ChainLinkFenceBlock.FenceType.SINGLE && !hasPost) {
+                // Single without post uses the straight_no_post model
+                modelName = blockName + "_straight_no_post";
+            } else if (!hasPost && type != ChainLinkFenceBlock.FenceType.SINGLE) {
+                // Other types without post use _no_post suffix
+                modelName = blockName + "_" + type.getSerializedName() + "_no_post";
+            } else {
+                // With post, use normal model name
+                modelName = blockName + "_" + type.getSerializedName();
+            }
+            
+            ModelFile model = models().getExistingFile(modLoc("block/" + modelName));
             
             // Calculate rotation based on fence type and connections
             int yRot = 0;

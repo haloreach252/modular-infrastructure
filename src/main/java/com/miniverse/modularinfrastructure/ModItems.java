@@ -7,11 +7,16 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import com.miniverse.modularinfrastructure.item.PostConfiguratorItem;
 import com.miniverse.modularinfrastructure.item.WireConnectorItem;
 import com.miniverse.modularinfrastructure.item.WireCuttersItem;
+import com.miniverse.modularinfrastructure.item.IndustrialWrenchItem;
 import com.miniverse.modularinfrastructure.common.items.WireCoilItem;
 import com.miniverse.modularinfrastructure.common.wires.ModWireTypes;
 
 public class ModItems {
     // Tools
+    public static final DeferredItem<IndustrialWrenchItem> INDUSTRIAL_WRENCH = 
+        ModularInfrastructure.ITEMS.register("industrial_wrench", 
+            () -> new IndustrialWrenchItem(new Item.Properties().stacksTo(1).durability(500)));
+    
     public static final DeferredItem<PostConfiguratorItem> POST_CONFIGURATOR = 
         ModularInfrastructure.ITEMS.register("post_configurator", 
             () -> new PostConfiguratorItem(new Item.Properties().stacksTo(1)));
@@ -58,6 +63,7 @@ public class ModItems {
     }
     
     public static void addCreativeTabItems(CreativeModeTab.Output output) {
+        output.accept(INDUSTRIAL_WRENCH.get());
         output.accept(POST_CONFIGURATOR.get());
         output.accept(WIRE_CONNECTOR.get());
         output.accept(WIRE_CUTTERS.get());

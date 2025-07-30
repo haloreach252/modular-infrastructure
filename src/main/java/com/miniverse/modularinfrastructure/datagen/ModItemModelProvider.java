@@ -19,6 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Tools
+        simpleItem(ModItems.INDUSTRIAL_WRENCH);
         postConfiguratorWithModes();
         simpleItem(ModItems.WIRE_CONNECTOR);
         simpleItem(ModItems.WIRE_CUTTERS);
