@@ -14,13 +14,17 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod(ModularInfrastructure.MODID)
 public class ModularInfrastructure {
     public static final String MODID = "modularinfrastructure";
+    public static final String MOD_ID = MODID; // Alternative constant name for compatibility
     public static final Logger LOGGER = LogUtils.getLogger();
     
     // Registries
@@ -45,6 +49,8 @@ public class ModularInfrastructure {
     public ModularInfrastructure(IEventBus modEventBus, ModContainer modContainer) {
         // Register event listeners
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerCapabilities);
+        modEventBus.addListener(com.miniverse.modularinfrastructure.datagen.DataGenerators::gatherData);
         
         // Register deferred registries
         BLOCKS.register(modEventBus);
@@ -56,12 +62,76 @@ public class ModularInfrastructure {
         ModBlocks.init();
         ModItems.init();
         ModBlockEntities.init();
+        com.miniverse.modularinfrastructure.common.data.ModDataAttachments.register(modEventBus);
+        com.miniverse.modularinfrastructure.api.IEApiDataComponents.register(modEventBus);
+        
+        // Initialize integrations (registers blocks/items but doesn't set up handlers yet)
+        com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.registerContent();
         
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        
+        // Register event handlers
+        NeoForge.EVENT_BUS.addListener(this::onRegisterCommands);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("Modular Infrastructure Common Setup");
+        
+        // Register wire types
+        event.enqueueWork(() -> {
+            com.miniverse.modularinfrastructure.common.wires.ModWireTypes.register();
+            
+            // Initialize GlobalWireNetwork static fields
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.GET_NET_UNCACHED.set(
+                level -> com.miniverse.modularinfrastructure.common.wires.WireNetworkCreator.getOrCreateNetwork(level)
+            );
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.SANITIZE_CONNECTIONS.set(() -> false);
+            com.miniverse.modularinfrastructure.api.wires.GlobalWireNetwork.VALIDATE_CONNECTIONS.set(() -> false);
+            
+            // Initialize wire coil use handler
+            com.miniverse.modularinfrastructure.api.wires.utils.WirecoilUtils.COIL_USE.set(
+                new com.miniverse.modularinfrastructure.common.wires.WireCoilUseHandler()
+            );
+            
+            // Register local network handlers
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler::new
+            );
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler::new
+            );
+            com.miniverse.modularinfrastructure.api.wires.localhandlers.LocalNetworkHandler.register(
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler.ID,
+                com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler::new
+            );
+            
+            // Initialize mod integration handlers (not content)
+            com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.initHandlers();
+        });
+    }
+    
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        LOGGER.info("Registering capabilities");
+        
+        // Register energy capability for power connectors
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            ModBlockEntities.POWER_CONNECTOR.get(),
+            (be, side) -> {
+                // Expose capability only on the opposite side of facing (where the connector attaches to machines)
+                // Also expose for null (direct access)
+                if (side == null || side == be.getBlockState().getValue(com.miniverse.modularinfrastructure.block.PowerConnectorBlock.FACING).getOpposite()) {
+                    return be.getEnergyCapability();
+                }
+                return null;
+            }
+        );
+    }
+    
+    private void onRegisterCommands(RegisterCommandsEvent event) {
+        com.miniverse.modularinfrastructure.common.commands.WireUpdateCommand.register(event.getDispatcher());
     }
 }

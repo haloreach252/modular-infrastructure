@@ -1,0 +1,40 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "minecraft:block/smooth_stone",
+		"base": "minecraft:block/smooth_stone",
+		"redstone": "minecraft:block/redstone_block"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"east": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"south": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"west": {"uv": [0, 0, 6, 2], "texture": "#base"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#base"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#base"}
+			}
+		},
+		{
+			"name": "redstone_receiver",
+			"from": [6, 2, 6],
+			"to": [10, 6, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, 0]},
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 4, 4], "texture": "#redstone"},
+				"east": {"uv": [0, 0, 4, 4], "texture": "#redstone"},
+				"south": {"uv": [0, 0, 4, 4], "texture": "#redstone"},
+				"west": {"uv": [0, 0, 4, 4], "texture": "#redstone"},
+				"up": {"uv": [0, 0, 4, 4], "texture": "#redstone"},
+				"down": {"uv": [0, 0, 4, 4], "texture": "#redstone"}
+			}
+		}
+	]
+}

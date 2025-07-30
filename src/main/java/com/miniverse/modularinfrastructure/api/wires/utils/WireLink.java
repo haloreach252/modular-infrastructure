@@ -1,0 +1,53 @@
+// Originally from Immersive Engineering, adapted under its license
+/*
+ * BluSunrize
+ * Copyright (c) 2023
+ *
+ * This code is licensed under "Blu's License of Common Sense"
+ * Details can be found in the license file in the root folder of this project
+ */
+
+package com.miniverse.modularinfrastructure.api.wires.utils;
+
+import com.miniverse.modularinfrastructure.api.TargetingInfo;
+import com.miniverse.modularinfrastructure.api.wires.ConnectionPoint;
+import io.netty.buffer.ByteBuf;
+import malte0811.dualcodecs.DualCodec;
+import malte0811.dualcodecs.DualCodecs;
+import malte0811.dualcodecs.DualCompositeCodecs;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
+
+public record WireLink(
+		ConnectionPoint cp, ResourceKey<Level> dimension, BlockPos offset, TargetingInfo target
+)
+{
+	public static final DualCodec<ByteBuf, TargetingInfo> TARGETING_INFO_CODECS = DualCompositeCodecs.composite(
+			DualCodecs.DIRECTION.fieldOf("side"), t -> t.side(),
+			DualCodecs.FLOAT.fieldOf("hitX"), t -> t.hitX(),
+			DualCodecs.FLOAT.fieldOf("hitY"), t -> t.hitY(),
+			DualCodecs.FLOAT.fieldOf("hitZ"), t -> t.hitZ(),
+			TargetingInfo::new
+	);
+
+	public static final DualCodec<RegistryFriendlyByteBuf, WireLink> CODECS = DualCompositeCodecs.composite(
+			ConnectionPoint.CODECS.fieldOf("cp"), WireLink::cp,
+			DualCodecs.resourceKey(Registries.DIMENSION).fieldOf("dimension"), WireLink::dimension,
+			DualCodecs.BLOCK_POS.fieldOf("offset"), WireLink::offset,
+			TARGETING_INFO_CODECS.fieldOf("target"), WireLink::target,
+			WireLink::new
+	);
+
+	public WireLink
+	{
+		offset = offset.immutable();
+	}
+
+	public static WireLink create(ConnectionPoint cp, Level world, BlockPos offset, TargetingInfo info)
+	{
+		return new WireLink(cp, world.dimension(), offset, info);
+	}
+}

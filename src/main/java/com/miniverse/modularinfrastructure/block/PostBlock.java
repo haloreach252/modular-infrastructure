@@ -24,7 +24,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.component.CustomData;
 
 import com.miniverse.modularinfrastructure.ModBlockEntities;
+import com.miniverse.modularinfrastructure.ModularInfrastructure;
 import com.miniverse.modularinfrastructure.blockentity.PostBlockEntity;
+import com.miniverse.modularinfrastructure.item.PostBlockItem;
 import com.mojang.serialization.MapCodec;
 
 import javax.annotation.Nullable;
@@ -75,11 +77,11 @@ public class PostBlock extends BaseEntityBlock {
         ItemStack stack = context.getItemInHand();
         int width = 4; // Default 8px
         
-        // Check if item has width data in custom data component
-        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
-        if (customData != null && customData.contains("PostWidth")) {
-            width = customData.copyTag().getInt("PostWidth");
-            width = Math.max(2, Math.min(8, width)); // Clamp to valid range
+        // Use PostBlockItem's method to get the stored width
+        if (stack.getItem() instanceof PostBlockItem) {
+            width = PostBlockItem.getStoredWidth(stack);
+            // Debug logging
+            ModularInfrastructure.LOGGER.debug("PostBlock placement - Stack: {}, Width from NBT: {}", stack, width);
         }
         
         return this.defaultBlockState().setValue(WIDTH, width);

@@ -19,6 +19,18 @@ group = mod_group_id
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven { // BlockModelSplitter and DualCodecs
+        name 'Jared maven'
+        url 'https://maven.blamejared.com/'
+    }
+
+    maven {
+        name 'Modmaven'
+        url = uri("https://modmaven.dev")
+        content {
+            includeGroup("appeng")
+        }
+    }
 }
 
 base {
@@ -112,6 +124,17 @@ configurations {
 }
 
 dependencies {
+    // DualCodecs for wire system
+    jarJar(implementation("malte0811:DualCodecs")) {
+        version {
+            strictly "[0.1.2,1)"
+            prefer "0.1.2"
+        }
+    }
+
+    compileOnly "org.appliedenergistics:appliedenergistics2:19.2.8"
+    runtimeOnly "org.appliedenergistics:appliedenergistics2:19.2.8"
+    
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

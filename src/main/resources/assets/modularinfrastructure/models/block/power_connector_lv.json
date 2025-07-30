@@ -1,0 +1,83 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "modularinfrastructure:block/concrete_post_side",
+		"metal": "modularinfrastructure:block/concrete_post_side",
+		"insulator": "block/terracotta",
+		"connector": "block/copper_block"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [5.5, 0, 5.5],
+			"to": [10.5, 2, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -1]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 2], "texture": "#metal"},
+				"east": {"uv": [0, 0, 8, 2], "texture": "#metal"},
+				"south": {"uv": [0, 0, 8, 2], "texture": "#metal"},
+				"west": {"uv": [0, 0, 8, 2], "texture": "#metal"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#metal"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "insulator_body",
+			"from": [6.25, 2, 6.25],
+			"to": [9.75, 7, 9.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 2, 6]},
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
+				"east": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
+				"west": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#insulator"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#insulator"}
+			}
+		},
+		{
+			"name": "ring_1",
+			"from": [5.25, 2.5, 5.25],
+			"to": [10.75, 3.9, 10.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 4]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#metal"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "ring_2",
+			"from": [5.25, 4.75, 5.25],
+			"to": [10.75, 6.15, 10.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 3, 4]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"east": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"south": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"west": {"uv": [0, 0, 8, 1], "texture": "#metal"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#metal"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "top_plate",
+			"from": [7, 7, 7],
+			"to": [9, 7.8, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 1], "texture": "#connector"},
+				"east": {"uv": [0, 0, 4, 1], "texture": "#connector"},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#connector"},
+				"west": {"uv": [0, 0, 4, 1], "texture": "#connector"},
+				"up": {"uv": [0, 0, 4, 4], "texture": "#connector"},
+				"down": {"uv": [0, 0, 4, 4], "texture": "#connector"}
+			}
+		}
+	]
+}

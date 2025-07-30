@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "modularinfrastructure:item/post_configurator_batch"
+  }
+}

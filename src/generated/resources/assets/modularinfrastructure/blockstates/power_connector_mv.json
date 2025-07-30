@@ -1,0 +1,29 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "modularinfrastructure:block/power_connector_mv",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "modularinfrastructure:block/power_connector_mv",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "modularinfrastructure:block/power_connector_mv",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "modularinfrastructure:block/power_connector_mv",
+      "x": 270
+    },
+    "facing=up": {
+      "model": "modularinfrastructure:block/power_connector_mv"
+    },
+    "facing=west": {
+      "model": "modularinfrastructure:block/power_connector_mv",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
