@@ -17,6 +17,7 @@ import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.EnergyTransferHandler.IEnergyWire;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler;
 import com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler.IShockingWire;
+import com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler;
 import com.miniverse.modularinfrastructure.common.config.IEClientConfig;
 import com.miniverse.modularinfrastructure.common.config.IEServerConfig.Wires.EnergyWireConfig;
 import com.miniverse.modularinfrastructure.common.config.IEServerConfig.Wires.WireConfig;
@@ -57,7 +58,7 @@ public class IEWireTypes
 		WireType.STEEL = STEEL = new ShockingWire(IEWireType.STEEL);
 		WireType.STRUCTURE_ROPE = STRUCTURE_ROPE = new BasicWire(IEWireType.STRUCTURE_ROPE);
 		WireType.STRUCTURE_STEEL = STRUCTURE_STEEL = new BasicWire(IEWireType.STRUCTURE_STEEL);
-		WireType.REDSTONE = REDSTONE = new BasicWire(IEWireType.REDSTONE);
+		WireType.REDSTONE = REDSTONE = new RedstoneWire(IEWireType.REDSTONE);
 		WireType.COPPER_INSULATED = COPPER_INSULATED = new EnergyWire(IEWireType.COPPER_INSULATED);
 		WireType.ELECTRUM_INSULATED = ELECTRUM_INSULATED = new EnergyWire(IEWireType.ELECTRUM_INSULATED);
 		WireType.INTERNAL_CONNECTION = INTERNAL_CONNECTION = new InternalConnection();
@@ -264,6 +265,20 @@ public class IEWireTypes
 		public Collection<ResourceLocation> getRequestedHandlers()
 		{
 			return ImmutableList.of(WireDamageHandler.ID);
+		}
+	}
+
+	private static class RedstoneWire extends BasicWire
+	{
+		public RedstoneWire(IEWireType type)
+		{
+			super(type);
+		}
+
+		@Override
+		public Collection<ResourceLocation> getRequestedHandlers()
+		{
+			return ImmutableList.of(RedstoneNetworkHandler.ID);
 		}
 	}
 

@@ -200,6 +200,11 @@ public class ModWireTypes
 		@Override
 		public Collection<ResourceLocation> getRequestedHandlers()
 		{
+			// Check if this is a data cable and AE2 is loaded
+			if ("modularinfrastructure:data".equals(category) && 
+			    com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.isAE2Loaded()) {
+				return ImmutableList.of(com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.AE2_NETWORK_BRIDGE_HANDLER);
+			}
 			return ImmutableList.of();
 		}
 	}

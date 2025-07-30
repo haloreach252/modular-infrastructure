@@ -110,7 +110,16 @@ public class ConnectionRenderer implements ResourceManagerReloadListener
 	)
 	{
 		Connection connection = toRender.connection();
-		int color = connection.type.getColour(connection);
+		// Check if we should use AE2 channel-based coloring
+		int color;
+		if (level instanceof net.minecraft.world.level.Level fullLevel && 
+		    com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.isAE2Loaded() &&
+		    (connection.type == com.miniverse.modularinfrastructure.common.wires.ModWireTypes.DATA_CABLE || 
+		     connection.type == com.miniverse.modularinfrastructure.common.wires.ModWireTypes.DENSE_CABLE)) {
+			color = com.miniverse.modularinfrastructure.integration.ae2.AE2DataCableRenderer.getDataCableColor(connection, fullLevel);
+		} else {
+			color = connection.type.getColour(connection);
+		}
 		double radius = connection.type.getRenderDiameter()/2;
 		int lastLight = 0;
 		List<RenderedSegment> renderedSection = SEGMENT_CACHE.getUnchecked(new SectionKey(

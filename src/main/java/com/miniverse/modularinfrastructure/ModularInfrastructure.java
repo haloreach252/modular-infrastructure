@@ -64,6 +64,9 @@ public class ModularInfrastructure {
         com.miniverse.modularinfrastructure.common.data.ModDataAttachments.register(modEventBus);
         com.miniverse.modularinfrastructure.api.IEApiDataComponents.register(modEventBus);
         
+        // Initialize integrations (registers blocks/items but doesn't set up handlers yet)
+        com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.registerContent();
+        
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -100,6 +103,9 @@ public class ModularInfrastructure {
                 com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler.ID,
                 com.miniverse.modularinfrastructure.api.wires.localhandlers.WireDamageHandler::new
             );
+            
+            // Initialize mod integration handlers (not content)
+            com.miniverse.modularinfrastructure.integration.ae2.ModAE2Integration.initHandlers();
         });
     }
     

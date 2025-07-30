@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.miniverse.modularinfrastructure.ModBlockEntities;
 import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
 import com.miniverse.modularinfrastructure.common.wires.WireConfig;
+import com.miniverse.modularinfrastructure.api.wires.ConnectionPoint;
+import com.miniverse.modularinfrastructure.api.wires.redstone.IRedstoneConnector;
+import com.miniverse.modularinfrastructure.api.wires.redstone.RedstoneNetworkHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -15,7 +18,7 @@ import java.util.Collection;
 /**
  * Block entity for utility connectors (redstone, structural)
  */
-public class UtilityConnectorBlockEntity extends ConnectorBlockEntity {
+public class UtilityConnectorBlockEntity extends ConnectorBlockEntity implements IRedstoneConnector {
     private final UtilityConnectorBlock.UtilityType type;
     private int redstoneSignal = 0; // For redstone connectors
     
@@ -47,7 +50,7 @@ public class UtilityConnectorBlockEntity extends ConnectorBlockEntity {
             this.redstoneSignal = Math.max(0, Math.min(15, signal));
             setChanged();
             
-            // TODO: Propagate signal through wire network
+            // Signal will be propagated through wire network via updateInput
         }
     }
     
@@ -77,5 +80,46 @@ public class UtilityConnectorBlockEntity extends ConnectorBlockEntity {
             );
             case STRUCTURAL -> ImmutableList.of(); // Structural wires don't need handlers
         };
+    }
+    
+    // IRedstoneConnector implementation
+    @Override
+    public void onChange(ConnectionPoint cp, RedstoneNetworkHandler handler) {
+        if (type != UtilityConnectorBlock.UtilityType.REDSTONE) {
+            return;
+        }
+        
+        // Update our redstone output based on the network
+        byte[] values = handler.getValuesExcluding(cp);
+        int maxSignal = 0;
+        for (byte val : values) {
+            maxSignal = Math.max(maxSignal, val & 0xFF);
+        }
+        
+        if (this.redstoneSignal != maxSignal) {
+            this.redstoneSignal = maxSignal;
+            setChanged();
+            
+            // Notify neighbors of redstone change
+            if (level != null && !level.isClientSide) {
+                level.updateNeighborsAt(worldPosition, getBlockState().getBlock());
+            }
+        }
+    }
+    
+    @Override
+    public void updateInput(byte[] signals, ConnectionPoint cp) {
+        if (type != UtilityConnectorBlock.UtilityType.REDSTONE) {
+            return;
+        }
+        
+        // Get redstone input from neighboring blocks
+        if (level != null) {
+            int power = level.getBestNeighborSignal(worldPosition);
+            if (power > 0) {
+                // Set all channels to this power level (IE uses channel 0 by default)
+                signals[0] = (byte) Math.max(signals[0], power);
+            }
+        }
     }
 }

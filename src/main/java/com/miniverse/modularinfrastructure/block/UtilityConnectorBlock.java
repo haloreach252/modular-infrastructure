@@ -4,6 +4,8 @@ import com.miniverse.modularinfrastructure.ModBlockEntities;
 import com.miniverse.modularinfrastructure.api.wires.WireType;
 import com.miniverse.modularinfrastructure.blockentity.UtilityConnectorBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -69,5 +71,32 @@ public class UtilityConnectorBlock extends ConnectorBlock {
             case REDSTONE -> Block.box(5, 0, 5, 11, 6, 11);   // Redstone: 6x6x6
             case STRUCTURAL -> Block.box(5, 0, 5, 11, 8, 11); // Structural: 6x8x6
         };
+    }
+    
+    // Redstone functionality
+    @Override
+    @SuppressWarnings("deprecation")
+    public boolean isSignalSource(BlockState state) {
+        return utilityType == UtilityType.REDSTONE;
+    }
+    
+    @Override
+    @SuppressWarnings("deprecation")
+    public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        if (utilityType != UtilityType.REDSTONE) {
+            return 0;
+        }
+        
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be instanceof UtilityConnectorBlockEntity connector) {
+            return connector.getRedstoneSignal();
+        }
+        return 0;
+    }
+    
+    @Override
+    @SuppressWarnings("deprecation")
+    public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return getSignal(state, level, pos, direction);
     }
 }
