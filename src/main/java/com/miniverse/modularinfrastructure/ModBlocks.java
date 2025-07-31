@@ -1,5 +1,6 @@
 package com.miniverse.modularinfrastructure;
 
+import com.miniverse.modularinfrastructure.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -10,12 +11,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-import com.miniverse.modularinfrastructure.block.PostBlock;
-import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
-import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
-import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
-import com.miniverse.modularinfrastructure.block.CircuitBreakerBlock;
-import com.miniverse.modularinfrastructure.block.ChainLinkFenceBlock;
 import com.miniverse.modularinfrastructure.item.PostBlockItem;
 
 import java.util.function.Supplier;
@@ -126,6 +121,13 @@ public class ModBlocks {
             .strength(3.0F)
             .sound(SoundType.METAL)
             .noOcclusion()));
+
+    public static final DeferredBlock<ConcreteBarrierBlock> CONCRETE_BARRIER = registerBlock("concrete_barrier",
+            () -> new ConcreteBarrierBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(3.0f)
+                    .sound(SoundType.STONE)
+                    .noOcclusion()));
     
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = ModularInfrastructure.BLOCKS.register(name, block);
@@ -187,5 +189,8 @@ public class ModBlocks {
         
         // Fencing
         output.accept(CHAIN_LINK_FENCE.get());
+
+        // Barriers
+        output.accept(CONCRETE_BARRIER.get());
     }
 }

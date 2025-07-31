@@ -1,0 +1,892 @@
+{
+  "variants": {
+    "east=false,is_base=false,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=false,is_base=false,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=false,is_base=false,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=false,is_base=false,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=false,is_base=false,north=false,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=false,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=false,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=false,is_base=false,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 180
+    },
+    "east=false,is_base=false,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=false,is_base=false,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 180
+    },
+    "east=false,is_base=false,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=false,is_base=false,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=false,is_base=false,north=true,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=false,north=true,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=false,is_base=true,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=false,is_base=true,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=false,is_base=true,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=false,is_base=true,north=false,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=false,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=false,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=false,is_base=true,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 180
+    },
+    "east=false,is_base=true,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=false,is_base=true,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 180
+    },
+    "east=false,is_base=true,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=false,is_base=true,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=false,is_base=true,north=true,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=false,is_base=true,north=true,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 270
+    },
+    "east=true,is_base=false,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=true,is_base=false,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=true,is_base=false,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=true,is_base=false,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight"
+    },
+    "east=true,is_base=false,north=false,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=false,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=false,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 180
+    },
+    "east=true,is_base=false,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=false,north=true,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=false,north=true,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=false,north=true,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=false,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_corner"
+    },
+    "east=true,is_base=false,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_cross"
+    },
+    "east=true,is_base=false,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_straight",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=false,north=true,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_t",
+      "y": 90
+    },
+    "east=true,is_base=false,north=true,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_t"
+    },
+    "east=true,is_base=true,north=false,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=false,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=false,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=false,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=false,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=true,is_base=true,north=false,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=true,is_base=true,north=false,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=true,is_base=true,north=false,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base"
+    },
+    "east=true,is_base=true,north=false,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=false,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=false,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=false,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 180
+    },
+    "east=true,is_base=true,north=true,south=false,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=false,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=false,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=false,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=false,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=false,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=false,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=false,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=false,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=false,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=false,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=false,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=false,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    },
+    "east=true,is_base=true,north=true,south=false,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    },
+    "east=true,is_base=true,north=true,south=false,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    },
+    "east=true,is_base=true,north=true,south=false,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    },
+    "east=true,is_base=true,north=true,south=true,type=corner,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=true,type=corner,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=true,type=corner,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=true,type=corner,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_corner"
+    },
+    "east=true,is_base=true,north=true,south=true,type=cross,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=true,type=cross,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=true,type=cross,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=true,type=cross,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_cross"
+    },
+    "east=true,is_base=true,north=true,south=true,type=straight,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=straight,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=straight,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=straight,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=t_junction,waterlogged=false,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=t_junction,waterlogged=false,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    },
+    "east=true,is_base=true,north=true,south=true,type=t_junction,waterlogged=true,west=false": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t",
+      "y": 90
+    },
+    "east=true,is_base=true,north=true,south=true,type=t_junction,waterlogged=true,west=true": {
+      "model": "modularinfrastructure:block/concrete_barrier_base_t"
+    }
+  }
+}

@@ -2,12 +2,7 @@ package com.miniverse.modularinfrastructure.datagen;
 
 import com.miniverse.modularinfrastructure.ModularInfrastructure;
 import com.miniverse.modularinfrastructure.ModBlocks;
-import com.miniverse.modularinfrastructure.block.PostBlock;
-import com.miniverse.modularinfrastructure.block.ConnectorBlock;
-import com.miniverse.modularinfrastructure.block.PowerConnectorBlock;
-import com.miniverse.modularinfrastructure.block.DataConnectorBlock;
-import com.miniverse.modularinfrastructure.block.UtilityConnectorBlock;
-import com.miniverse.modularinfrastructure.block.ChainLinkFenceBlock;
+import com.miniverse.modularinfrastructure.block.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -17,6 +12,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     
@@ -49,6 +45,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         
         // Fencing
         chainLinkFenceBlock(ModBlocks.CHAIN_LINK_FENCE);
+        
+        // Decorative blocks
+        concreteBarrierBlock(ModBlocks.CONCRETE_BARRIER);
     }
     
     private void postBlockWithWidthVariants(DeferredBlock<PostBlock> blockSupplier, String materialName) {
@@ -224,6 +223,97 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         
         // Generate item model - use the single variant for inventory
-        simpleBlockItem(block, models().getExistingFile(modLoc("block/" + blockName + "_single")));
+        simpleBlockItem(block, models().getExistingFile(modLoc("block/" + blockName + "_straight_no_post")));
+    }
+    
+    private void concreteBarrierBlock(DeferredBlock<ConcreteBarrierBlock> blockSupplier) {
+        ConcreteBarrierBlock block = blockSupplier.get();
+        String blockName = blockSupplier.getId().getPath();
+        
+        // Create blockstate variants for each barrier type
+        getVariantBuilder(block).forAllStates(state -> {
+            ConcreteBarrierBlock.BarrierType type = state.getValue(ConcreteBarrierBlock.TYPE);
+            boolean isBase = state.getValue(ConcreteBarrierBlock.IS_BASE);
+            boolean north = state.getValue(ConcreteBarrierBlock.NORTH);
+            boolean east = state.getValue(ConcreteBarrierBlock.EAST);
+            boolean south = state.getValue(ConcreteBarrierBlock.SOUTH);
+            boolean west = state.getValue(ConcreteBarrierBlock.WEST);
+            
+            // Determine model name based on type and is_base
+            String modelName = blockName;
+            if (isBase) {
+                modelName += "_base";
+                if (type != ConcreteBarrierBlock.BarrierType.STRAIGHT) {
+                    // Map enum names to model file names
+                    String typeName = type.getSerializedName();
+                    if (typeName.equals("t_junction")) {
+                        typeName = "t";
+                    }
+                    modelName += "_" + typeName;
+                }
+            } else {
+                // Map enum names to model file names
+                String typeName = type.getSerializedName();
+                if (typeName.equals("t_junction")) {
+                    typeName = "t";
+                }
+                modelName += "_" + typeName;
+            }
+            
+            ModelFile model = models().getExistingFile(modLoc("block/" + modelName));
+            
+            // Calculate rotation based on barrier type and connections
+            int yRot = 0;
+            
+            switch (type) {
+                case STRAIGHT:
+                    // Straight barrier needs rotation based on direction
+                    if (north || south) {
+                        yRot = 90; // North-South orientation (rotate 90 degrees)
+                    } else {
+                        yRot = 0; // East-West orientation (default model orientation)
+                    }
+                    break;
+                    
+                case CORNER:
+                    // Corner barrier needs rotation based on which sides connect
+                    if (north && east) {
+                        yRot = 0; // Default: North-East corner
+                    } else if (east && south) {
+                        yRot = 90; // East-South corner
+                    } else if (south && west) {
+                        yRot = 180; // South-West corner
+                    } else if (west && north) {
+                        yRot = 270; // West-North corner
+                    }
+                    break;
+                    
+                case T_JUNCTION:
+                    // T-junction needs rotation based on which side doesn't connect
+                    if (!north) {
+                        yRot = 180; // T pointing south
+                    } else if (!east) {
+                        yRot = 270; // T pointing west
+                    } else if (!south) {
+                        yRot = 0; // T pointing north (default)
+                    } else if (!west) {
+                        yRot = 90; // T pointing east
+                    }
+                    break;
+                    
+                case CROSS:
+                    // Cross doesn't need rotation - it's symmetrical
+                    yRot = 0;
+                    break;
+            }
+            
+            return ConfiguredModel.builder()
+                .modelFile(model)
+                .rotationY(yRot)
+                .build();
+        });
+        
+        // Generate item model - use the base variant for inventory
+        simpleBlockItem(block, models().getExistingFile(modLoc("block/" + blockName + "_base")));
     }
 }

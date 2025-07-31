@@ -1,3 +1,3 @@
 {
-  "parent": "modularinfrastructure:block/chain_link_fence_single"
+  "parent": "modularinfrastructure:block/chain_link_fence_straight_no_post"
 }
